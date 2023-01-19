@@ -46,7 +46,7 @@
                                             <td>{{ $post->title }}</td>
                                             <td><a href="{{ route('admin.post.show', $post->id) }}"> Просмотреть </a></td>
                                             <td><a href="{{ route('admin.post.edit', $post->id) }}"
-                                                   class="text-success"> Редактировать категорию </a></td>
+                                                   class="text-success"> Редактировать пост </a></td>
                                             <td>
                                             <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
                                                 @csrf
