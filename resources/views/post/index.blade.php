@@ -41,7 +41,10 @@
                             <a href="{{ route ('post.show', $post->id) }}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                             </a>
+
+
                         </div>
+
                     @endforeach
                 </div>
                 <div class="row">

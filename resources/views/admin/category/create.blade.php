@@ -46,7 +46,6 @@
             </div>
             <!-- /.row -->
 
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

@@ -67,7 +67,7 @@
         <div class="row footer-widget-area">
             <div class="col-md-3">
                 <a href="index.html" class="footer-brand-wrapper">
-                    <img src="{{ asset('assets/images/CrashLogo1.png') }}" alt="edica logo">
+                    <img src="{{ asset('assets/images/CrashLogo1.png') }}" alt="Логотип не загрузился :(">
                 </a>
                 <p class="contact-details">rybtsov.eg@yandex.ru</p>
                 <p class="contact-details">+7 909 204 09 21</p>
