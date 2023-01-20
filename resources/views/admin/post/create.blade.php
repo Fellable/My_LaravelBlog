@@ -12,7 +12,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
                         <li class="breadcrumb-item active">Добавление поста</li>
                     </ol>
                 </div><!-- /.col -->
@@ -73,7 +73,7 @@
 
 
                         <div class="form-group w-50">
-                            <lable> Выберите категорию </lable>
+                            <label> Выберите категорию </label>
                             <select name="category_id" class="form-control">
                                 @foreach ($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -96,7 +96,14 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label> Технология</label>
+                            <input type="text" name="technology" class="form-control w-25" placeholder="Основная технология" value="{{ old('technology') }}">
 
+                            @error('technology')
+                            <div class="text-danger">  {{ $message }}</div>
+                            @enderror
+                        </div>
 
 
 
@@ -108,8 +115,6 @@
             </div>
             </div>
             <!-- /.row -->
-
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

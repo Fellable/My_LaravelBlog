@@ -13,7 +13,9 @@ class IndexController extends Controller
 {
     public function __invoke()
     {
-        $posts = Post::paginate(6);
+       $posts = Post::paginate(6);
+
+
         $count = Post::all()->count();
         if ($count >= 4) {
             $randomPosts = Post::get()->random(4);

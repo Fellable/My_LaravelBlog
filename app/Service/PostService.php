@@ -27,6 +27,7 @@ class PostService
                     'preview_image' => $data['preview_image'],
                     'main_image' => $data['main_image'],
                     'category_id' => $data['category_id'],
+                    'technology' => $data['technology']
                 ]
             );
             if (isset($tagIds)){

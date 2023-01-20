@@ -12,8 +12,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Добавление поста</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.main.index') }}">Главная</a></li>
+                        <li class="breadcrumb-item active">Редактирование поста</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -35,7 +35,7 @@
                             <input type="text" name="title" class="form-control w-25" placeholder="Название поста" value="{{  $post-> title }}">
 
                             @error('title')
-                            <div class="text-danger"> Это поле необходимо для заполнения {{ $message }}</div>
+                            <div class="text-danger"> {{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
@@ -43,7 +43,7 @@
                         {{ $post -> content }}
                     </textarea>
                             @error('content')
-                            <div class="text-danger"> Это поле необходимо для заполнения {{ $message }}</div>
+                            <div class="text-danger"> {{ $message }}</div>
                             @enderror
                         </div>
                         <div class="w-25">
@@ -62,7 +62,7 @@
                             </div>
                         </div>
                         @error('preview_image')
-                        <div class="text-danger"> Это поле необходимо для заполнения {{ $message }}</div>
+                        <div class="text-danger"> {{ $message }}</div>
                         @enderror
 
                         <div class="w-25">
@@ -78,12 +78,12 @@
                             </div>
                         </div>
                         @error('main_image')
-                        <div class="text-danger"> Это поле необходимо для заполнения {{ $message }}</div>
+                        <div class="text-danger"> {{ $message }}</div>
                         @enderror
 
 
                         <div class="form-group w-50">
-                            <lable> Выберите категорию </lable>
+                            <label> Выберите категорию </label>
                             <select name="category_id" class="form-control">
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
@@ -93,7 +93,7 @@
                             </select>
                         </div>
                         @error('category_id')
-                        <div class="text-danger"> Это поле необходимо для заполнения {{ $message }}</div>
+                        <div class="text-danger"> {{ $message }}</div>
                         @enderror
 
                         <div class="form-group">
@@ -105,6 +105,17 @@
                                             value ={{ $tag -> id }}> {{$tag->title}}     @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label> Технология</label>
+                            <input type="text" name="technology" class="form-control w-25" placeholder="Основная технология" value="{{  $post-> technology }}">
+
+                            @error('technology')
+                            <div class="text-danger"> {{ $message }}</div>
+                            @enderror
+                        </div>
+
+
                         <div class="form-group d-block">
                             <input type="submit" class="btn btn-primary" value="Обновить">
                         </div>
@@ -116,7 +127,6 @@
             </div>
             <!-- /.row -->
 
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
