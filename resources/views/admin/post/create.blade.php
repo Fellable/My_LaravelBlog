@@ -104,7 +104,14 @@
                             <div class="text-danger">  {{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="form-group">
+                            <label> Что реализовано </label>
+                            <input type="text" name="additional_tech" class="form-control w-25" placeholder="Что реализовано (crud)" value="{{ old('additional_tech') }}">
 
+                            @error('additional_tech')
+                            <div class="text-danger">  {{ $message }}</div>
+                            @enderror
+                        </div>
 
 
                     <div class="form-group d-block">

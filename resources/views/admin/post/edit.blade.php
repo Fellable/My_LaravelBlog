@@ -1,6 +1,8 @@
 @extends('admin.layouts.main')
 @section('content')
 
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -102,7 +104,8 @@
                                 @foreach ($tags as $tag)
                                     <option {{ $post->tags->contains($tag->id) ? 'selected' : '' }}
 
-                                            value ={{ $tag -> id }}> {{$tag->title}}     @endforeach
+                                            value ={{ $tag -> id }}> {{$tag->title}}
+                                @endforeach
                             </select>
                         </div>
 
@@ -115,6 +118,14 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label> Что реализовано</label>
+                            <input type="text" name="additional_tech" class="form-control w-25" placeholder="Что реализовано (crud)" value="{{  $post-> additional_tech }}">
+
+                            @error('additional_tech')
+                            <div class="text-danger"> {{ $message }}</div>
+                            @enderror
+                        </div>
 
                         <div class="form-group d-block">
                             <input type="submit" class="btn btn-primary" value="Обновить">
