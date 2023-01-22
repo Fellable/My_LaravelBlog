@@ -113,6 +113,16 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label> GitHub </label>
+                            <input type="text" name="gitHub" class="form-control w-25" placeholder="gitHub" value="{{ old('gitHub') }}">
+
+                            @error('gitHub')
+                            <div class="text-danger">  {{ $message }}</div>
+                            @enderror
+                        </div>
+
+
 
                     <div class="form-group d-block">
                         <input type="submit" class="btn btn-primary" value="Добавить">
