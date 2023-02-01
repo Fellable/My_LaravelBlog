@@ -5,7 +5,7 @@ namespace Tests\Feature;
 // use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class homePageTest extends TestCase
+class registerPageTest extends TestCase
 {
     /**
      * A basic test example.
@@ -14,7 +14,7 @@ class homePageTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response()
     {
-        $response = $this->get('/posts');
+        $response = $this->get('/register');
 
         $response->assertStatus(200);
     }
