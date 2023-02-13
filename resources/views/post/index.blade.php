@@ -5,6 +5,7 @@
             <h1 class="edica-page-title" data-aos="fade-up">Блог</h1>
             <section class="featured-posts-section">
                 <div class="row">
+
                     @foreach ($posts as $post)
                         <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
                             <div class="blog-post-thumbnail-wrapper">
@@ -13,21 +14,21 @@
                             <div class="d-flex justify-content-between">
                                 <p class="blog-post-category">{{ $post->category->title }}</p>
                                 @auth()
-                                <form action=" {{ route('post.like.store', $post->id) }}" method="post">
-                                    @csrf
-                                    <span> {{ $post->liked_users_count }}</span>
-                                    <button type="submit" class="border-0 bg-transparent">
+                                    <form action=" {{ route('post.like.store', $post->id) }}" method="post">
+                                        @csrf
+                                        <span> {{ $post->liked_users_count }}</span>
+                                        <button type="submit" class="border-0 bg-transparent">
 
 
-                                        @if(auth()->user()->likedPosts->contains($post->id))
+                                            @if(auth()->user()->likedPosts->contains($post->id))
                                                 <i class="fas fa-heart"> </i>
                                             @else
                                                 <i class="far fa-heart"> </i>
                                             @endif
 
 
-                                    </button>
-                                </form>
+                                        </button>
+                                    </form>
                                 @endauth
                                 @guest()
                                     <div>
@@ -43,14 +44,58 @@
                             </a>
 
 
+                            <div class="rounded" style="background-color: #FFF3E3; border: 1px solid #FFA52F;">
+                                <div class="m-2 d-flex">
+                                    <span class="mr-2"> Основная технология:</span>
+                                    <div class="rounded pl-1 pr-1"
+                                         style="background-color: #fad6be; border: 1px solid #FFA52F;">  {{ $post->technology }}  </div>
+                                    <br>
+                                </div>
+
+                                <div class="m-2 d-flex" style="flex-wrap: wrap;">
+                                    <span class="mr-2"> Доп. технологии: </span>
+                                    @foreach ($post->tags as $tag)
+
+                                        <div class="rounded pl-1 pr-1 mr-1 mb-2"
+                                             style="background-color: #fad6be; border: 1px solid #FFA52F;">  {{ $tag->title }} </div>
+                                    @endforeach
+                                    <br>
+                                </div>
+                                <div class="m-2 d-flex" style="flex-wrap: wrap;">
+                                    <span class="mr-2"> Реализовано:  </span>
+                                    @foreach(explode(',', $post->additional_tech) as $post_tech)
+                                        <div class="rounded pl-1 pr-1 mr-1 mb-2"
+                                             style="background-color: #fad6be; border: 1px solid #FFA52F;">  {{ $post_tech }} </div>
+                                    @endforeach
+                                </div>
+
+                                <div class="m-2 d-flex" style="flex-wrap: wrap;">
+                                    <span class="mr-2"> GitHub ссылка:  </span>
+                                    @if($post->category->title === 'Коммерческие проекты')
+                                        <span class="mr-2 text-danger"> нельзя </span>
+                                    @else
+                                        @if(isset($post->gitHub))
+                                            <a href=" {{ $post->gitHub }}"> <i class="fab fa-github" style="font-size: 1.75em; color: green;"></i> </a>
+                                        @else
+                                            ewewe
+
+                                        @endif
+                                    @endif
+                                </div>
+
+
+                            </div>
                         </div>
+
+
+
 
                     @endforeach
                 </div>
                 <div class="row">
-                        <div class="mx-auto" style="margin-top: -100px">
-                            {{ $posts->links() }}
-                        </div>
+                    <div class="mx-auto" style="margin-top: -100px">
+                        {{ $posts->links() }}
+                    </div>
                 </div>
             </section>
             <div class="row">
@@ -93,7 +138,8 @@
                                     <figure class="carousel-item">
                                         <img src="assets/images/blog_7.jpg" alt="First slide">
                                         <figcaption class="post-title">
-                                            <a href="{{ route ('post.show', $post->id) }}">Front becomes an official Instagram Marketing Partner</a>
+                                            <a href="{{ route ('post.show', $post->id) }}">Front becomes an official
+                                                Instagram Marketing Partner</a>
                                         </figcaption>
                                     </figure>
                                     <div class="carousel-item">

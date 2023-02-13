@@ -38,6 +38,13 @@
                         <a class="nav-link" href=" {{ route('about.index') }}" > Обо мне (ищу работу)</a>
                     </li>
 
+
+                    @can('view', auth()->user())
+                    <li class="nav-item">
+                        <a class="nav-link" href=" {{ route('admin.main.index') }}" > Админка</a>
+                    </li>
+                    @endcan
+
                     @guest()
                         <li class="nav-item">
                             <a class="nav-link" href=" {{ route('lk.main.index') }}"> Войти </a>
