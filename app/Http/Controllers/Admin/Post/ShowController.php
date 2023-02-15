@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Post;
 
+use App\Http\Resources\Admin\PostResource;
 use App\Models\Post;
 
 class ShowController extends BaseController
@@ -9,6 +10,7 @@ class ShowController extends BaseController
     public function __invoke(Post $post)
     {
 
-      return view('admin.post.show', compact('post'));
+
+  return view('admin.post.show', compact('post'));
     }
 }
