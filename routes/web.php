@@ -59,7 +59,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Tag', 'prefix' => 'admi
 
 
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin\Post', 'prefix' => 'admin/posts', ], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Post', 'prefix' => 'admin/posts', 'middleware'=> ['auth','admin'] ], function () {
     Route::get('/', 'IndexController')->name('admin.post.index');
     Route::get('/create', 'CreateController')->name('admin.post.create');
     Route::post('/', 'StoreController')->name('admin.post.store');
