@@ -1,5 +1,7 @@
 <?php
 
+
+
 use App\Http\Controllers\Admin\Category\CreateController;
 use App\Http\Controllers\Admin\Category\DeleteController;
 use App\Http\Controllers\Admin\Category\EditController;
@@ -24,6 +26,7 @@ use App\Http\Controllers\Main\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
@@ -162,7 +165,6 @@ Route::group(['namespace' => 'App\Http\Controllers\Category', 'prefix' => 'categ
         Route::get('/' , 'IndexController')->name('category.post.index');
     });
 });
-
 
 
 Auth::routes(['verify' => true]);
