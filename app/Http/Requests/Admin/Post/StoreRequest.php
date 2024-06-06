@@ -31,9 +31,14 @@ class StoreRequest extends FormRequest
             'technology' => 'nullable|string',
             'additional_tech' => 'nullable | string',
             'gitHub' => 'nullable | string',
+            'queuery' => 'nullable | integer',
             'category_id' => 'required| integer |exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable | integer| exists:tags,id',
+            'post_images' => 'nullable | array',
+            'post_titles' => 'nullable | array',
+            'post_descriptions' => 'nullable | array',
+            'small_description' => 'required|string'
         ];
     }
 
@@ -51,11 +56,15 @@ class StoreRequest extends FormRequest
             'technology.string' => 'Данные должны соответствовать строчному типу.',
             'additional_tech.string' => 'Данные должны соответствовать строчному типу.',
             'gitHub.string' => 'Данные должны соответствовать строчному типу.',
+            'queuery.integer' => 'Данные должны быть числом',
             'category_id.required' => 'Это поле необходимо для заполнения.',
             'category_id.integer' => 'ID категории должен быть числом.',
             'category_id.exists' => 'ID категории должен быть в базе данных.',
             'tag_ids.array' => 'Необходимо отправить массив данных.',
-
+            'post_images.array' => 'Фигня какая-то приключилась',
+            'post_descriptions.array' => 'Фигня с post_descriptions',
+            'small_description.required' => 'Это поле необходимо для заполнения',
+            'small_description.string' => 'Это должна быть строка',
         ];
     }
 }

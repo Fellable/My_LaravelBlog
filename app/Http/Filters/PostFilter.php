@@ -12,13 +12,12 @@ class PostFilter extends AbstractFilter
     public const CONTENT = 'content';
     public const CATEGORY_ID = 'category_id';
 
-
     protected function getCallbacks(): array
     {
         return [
             self::TITLE => [$this, 'title'],
             self::CONTENT => [$this, 'content'],
-            self::CATEGORY_ID => [$this, 'categoryId'],
+            self::CATEGORY_ID => [$this, 'categoryId']
         ];
     }
 
@@ -36,4 +35,5 @@ class PostFilter extends AbstractFilter
     {
         $builder->where('category_id', $value);
     }
+
 }

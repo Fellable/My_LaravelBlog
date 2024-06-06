@@ -31,6 +31,7 @@ class FilterRequest extends FormRequest
             'technology' => 'nullable|string',
             'additional_tech' => 'nullable | string',
             'gitHub' => 'nullable | string',
+            'queuery' => 'nullable | int',
             'category_id' => ' integer |exists:categories,id',
             'tag_ids' => 'nullable|array',
             'tag_ids.*' => 'nullable | integer| exists:tags,id',

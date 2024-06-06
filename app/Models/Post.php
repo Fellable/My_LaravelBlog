@@ -19,6 +19,8 @@ class Post extends Model
     protected $with = ['category'];
 
 
+
+
     public function tags()
     {
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
@@ -39,4 +41,7 @@ class Post extends Model
         return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 
+    public function postImages(){
+        return $this->hasMany(PostImage::class, 'post_id', 'id');
+    }
 }
