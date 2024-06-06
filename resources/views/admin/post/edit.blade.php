@@ -49,7 +49,7 @@
                             @enderror
                         </div>
                         <div class="w-25">
-                            <img src="{{ url('storage/' . $post->preview_image) }}" alt="preview_image" class="w-25">
+                            <img src="{{ url('storage/app/public/' . $post->preview_image) }}" alt="preview_image" class="w-25">
                         </div>
 
                         <div class="input-group w-50">
@@ -132,6 +132,15 @@
                             <input type="text" name="gitHub" class="form-control w-25" placeholder="gitHub" value="{{  $post-> gitHub }}">
 
                             @error('gitHub')
+                            <div class="text-danger"> {{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label> Queuery</label>
+                            <input type="text" name="queuery" class="form-control w-25" placeholder="queuery" value="{{  $post-> queuery }}">
+
+                            @error('queuery')
                             <div class="text-danger"> {{ $message }}</div>
                             @enderror
                         </div>

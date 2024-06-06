@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 
 <head>
@@ -19,39 +19,52 @@
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/CrashLogo1.png') }}" alt="Crassh"></a>
+
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#edicaMainNav" aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                    <li class="nav-item">
+                     <li class="nav-item">
+            <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/CrashLogo1.png') }}" alt="Crassh" style="height: 75px;"></a>
+                    </li>
+                    
+                    <li class="nav-item" style="align-items: center;
+    display: flex;">
                         <a class="nav-link" href=" {{ route('main.index') }}"> Мои проекты </a>
                     </li>
 
 
 
-                        <li class="nav-item">
+                        <li class="nav-item" style="align-items: center;
+    display: flex;">
                             <a class="nav-link" href=" {{ route('category.index') }}"> Категории </a>
                         </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href=" {{ route('about.index') }}" > Обо мне (ищу работу)</a>
-                    </li>
+
 
 
                     @can('view', auth()->user())
-                    <li class="nav-item">
-                        <a class="nav-link" href=" {{ route('admin.main.index') }}" > Админка</a>
+                    <li class="nav-item" style="align-items: center;
+    display: flex;">
+                        <a class="nav-link" href=" {{ route('admin.main.index') }}" style="align-items: center;
+    display: flex;"> Админка</a>
+                    </li>
+                    
+                                        <li class="nav-item" style="align-items: center;
+    display: flex;">
+                        <a class="nav-link" href=" {{ route('about.index') }}" > Обо мне (ищу работу)</a>
                     </li>
                     @endcan
 
                     @guest()
-                        <li class="nav-item">
+                        <li class="nav-item" style="align-items: center;
+    display: flex;">
                             <a class="nav-link" href=" {{ route('lk.main.index') }}"> Войти </a>
                         </li>
                     @endguest
                     @auth()
-                        <li class="nav-item active">
+                        <li class="nav-item active" style="align-items: center;
+    display: flex;">
                             <a class="nav-link" href=" {{ route('lk.main.index') }}"> Личный кабинет </a>
                         </li>
                     @endauth
@@ -85,12 +98,12 @@
             </div>
             <div class="col-md-3">
                 <nav class="footer-nav">
-                    <a href="#!" class="nav-link">Обо мне</a>
+                    <a href="#!" class="nav-link">Обо мне (временно скрыто)</a>
                 </nav>
             </div>
             <div class="col-md-3">
                 <nav class="footer-nav">
-                    <a href="#!" class="nav-link">Что я умею</a>
+                    <a href="#!" class="nav-link">Что я умею (временно скрыто)</a>
                 </nav>
             </div>
             <div class="col-md-3">

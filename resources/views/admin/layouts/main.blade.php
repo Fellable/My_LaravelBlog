@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+    @vite(['resources/js/admin/app.js'])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Dashboard</title>
@@ -22,6 +24,7 @@
 
 
     <link rel="stylesheet" href="{{ asset ('plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset ('plugins/switchery/dist/switchery.css') }}">
 
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset ('plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
@@ -112,6 +115,7 @@
 <script src="{{ asset ('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
 <script src="{{ asset ('dist/js/adminlte.js') }}"></script>
 <script src="{{ asset ('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"> </script>
+<script src="{{ asset ('plugins/switchery/dist/switchery.js') }}"> </script>
 
 
 
@@ -122,5 +126,18 @@
     }
 </style>
 
+<script>
+    /**
+     * Активирует Switchery - ползунок как на iphone. Вкл / Выкл.
+     */
+    document.addEventListener('DOMContentLoaded', function() {
+        let elem = document.querySelector('.js-switch');
+        if(elem){
+            let init = new Switchery(elem);
+        }
+
+    });
+
+</script>
 </body>
 </html>

@@ -31,30 +31,30 @@
                         <div class="card">
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
-                                <table class="table table-hover text-nowrap">
+                                <table id="sortable-table-crash" class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Название</th>
+                                        <th>                    <input type="checkbox" class="js-switch" checked /></th>
                                         <th colspan="3" class="text-center">Действие</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @foreach ($posts as $post)
-                                        <tr>
-                                            <td>{{ $post->id }}</td>
+                                        <tr class="sortable-item">
+                                            <td>  {{ $post->id }}</td>
                                             <td>{{ $post->title }}</td>
                                             <td><a href="{{ route('admin.post.show', $post->id) }}"> Просмотреть </a></td>
-                                            <td><a href="{{ route('admin.post.edit', $post->id) }}"
-                                                   class="text-success"> Редактировать пост </a></td>
+                                            <td><a href="{{ route('admin.post.edit', $post->id) }}" class="text-success"> Редактировать пост </a></td>
                                             <td>
-                                            <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="border-0 bg-transparent text-danger">
-                                                    Удалить
-                                                </button>
-                                            </form>
+                                                <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="border-0 bg-transparent text-danger">
+                                                        Удалить
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -81,5 +81,8 @@
         </section>
         <!-- /.content -->
     </div>
+
+
     <!-- /.content-wrapper -->
+
 @endsection

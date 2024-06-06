@@ -112,6 +112,17 @@
                             <div class="text-danger">  {{ $message }}</div>
                             @enderror
                         </div>
+                        
+                        <div class="form-group">
+                            <label> Маленькое описание на мейне </label>
+                            <input type="text" name="small_description" class="form-control w-25" placeholder="Что реализовано (crud)" value="{{ old('small_description') }}">
+
+                            @error('small_description')
+                            <div class="text-danger">  {{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        
 
                         <div class="form-group">
                             <label> GitHub </label>
@@ -122,8 +133,329 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label> Очередь </label>
+                            <input type="text" name="queuery" class="form-control w-25" placeholder="queuery" value="{{ old('queuery') }}">
+
+                            @error('queuery')
+                            <div class="text-danger">  {{ $message }}</div>
+                            @enderror
+                        </div>
 
 
+                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+
+                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+
+                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+
+                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+
+                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+
+                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+                        
+                        
+                                                <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+                                                <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+
+
+
+
+
+
+                                                <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                                                                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                                                                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                                                                        <div class="input-group w-50">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="exampleInputFile" name="post_images[]">
+                                <label class="custom-file-label" for="exampleInputFile">Выберите изображение для слайдера</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text"> Загрузить изображение</span>
+                            </div>
+                        </div>
+                        @error('post_images')
+                        <div class="text-danger"> {{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group">
+                            <label> Титул </label>
+                            <input type="text" name="post_titles[]" class="form-control w-25" >
+                        </div>
+
+                        <div class="form-group">
+                            <label> Описание </label>
+                            <input type="text" name="post_descriptions[]" class="form-control w-25" >
+                        </div>
                     <div class="form-group d-block">
                         <input type="submit" class="btn btn-primary" value="Добавить">
                     </div>
