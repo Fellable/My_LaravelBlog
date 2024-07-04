@@ -1,6 +1,7 @@
 <?php
 
 
+
 use App\Http\Controllers\Admin\Category\CreateController;
 use App\Http\Controllers\Admin\Category\DeleteController;
 use App\Http\Controllers\Admin\Category\EditController;
@@ -15,18 +16,30 @@ use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Main\IndexController;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
+
+
 
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', IndexController::class)->name('main.index');
 });
 
-Route::prefix('admin')->group(function () {
-    Route::group(['namespace' => 'App\Http\Controllers\Admin\Main', 'middleware'=> ['auth','admin']] , function () {
+Route::prefix('admin' )->group(function (){
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Main'], function() {
         Route::get('/', 'IndexController')->name('admin.main.index');
     });
 });
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin\Category', 'prefix' => 'admin/category'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Category', 'prefix' => 'admin/category', 'middleware'=> ['auth','admin', 'verified']], function () {
     Route::get('/', 'IndexController')->name('admin.category.index');
     Route::get('/create', 'CreateController')->name('admin.category.create');
     Route::post('/categories', 'StoreController')->name('admin.category.store');
@@ -37,7 +50,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Category', 'prefix' => 
 });
 
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin\Tag', 'prefix' => 'admin/tags'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Tag', 'prefix' => 'admin/tags', 'middleware'=> ['auth','admin', 'verified']], function () {
     Route::get('/', 'IndexController')->name('admin.tag.index');
     Route::get('/create', 'CreateController')->name('admin.tag.create');
     Route::post('/categories', 'StoreController')->name('admin.tag.store');
@@ -48,7 +61,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Tag', 'prefix' => 'admi
 });
 
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin\Post', 'prefix' => 'admin/posts'], function () {
+
+Route::group(['namespace' => 'App\Http\Controllers\Admin\Post', 'prefix' => 'admin/posts', 'middleware'=> ['auth','admin'] ], function () {
     Route::get('/', 'IndexController')->name('admin.post.index');
     Route::get('/create', 'CreateController')->name('admin.post.create');
     Route::post('/', 'StoreController')->name('admin.post.store');
@@ -59,7 +73,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\Post', 'prefix' => 'adm
 });
 
 
-Route::group(['namespace' => 'App\Http\Controllers\Admin\User', 'prefix' => 'admin/users', 'middleware' => ['verified']], function () {
+Route::group(['namespace' => 'App\Http\Controllers\Admin\User', 'prefix' => 'admin/users', 'middleware'=> ['auth','admin', 'verified']], function () {
     Route::get('/', 'IndexController')->name('admin.user.index');
     Route::get('/create', 'CreateController')->name('admin.user.create');
     Route::post('/users', 'StoreController')->name('admin.user.store');
@@ -71,57 +85,84 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin\User', 'prefix' => 'adm
 
 
 
-Route::group(['namespace' => 'App\Http\Controllers\Lk', 'prefix' => 'lk', 'middleware' => ['auth']], function () {
-    Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
-        Route::get('/', 'IndexController')->name('lk.main.index');
-    });
-    Route::group(['namespace' => 'Liked', 'prefix' => 'liked', 'middleware' => ['auth']], function () {
-        Route::get('/', 'IndexController')->name('lk.liked.index');
-        Route::delete('/{post}', 'DeleteController')->name('lk.liked.delete');
+
+                                                /* Личный кабинет */
+/**
+ * Основной роут
+ */
+Route::group(['namespace' => 'App\Http\Controllers\Lk', 'prefix' => 'lk', 'middleware'=> ['auth']], function () {
+    Route::group(['namespace' => 'Main', 'prefix'=> 'main'], function() {
+        Route::get('/', 'IndexController') -> name('lk.main.index');
     });
 
-    Route::group(['namespace' => 'Comment', 'prefix' => 'comment', 'middleware' => ['auth']], function () {
-        Route::get('/', 'IndexController')->name('lk.comment.index');
-        Route::get('/{comment}/edit', 'EditController')->name('lk.comment.edit');
-        Route::patch('/{comment}', 'UpdateController')->name('lk.comment.update');
-        Route::delete('/{comment}', 'DeleteController')->name('lk.comment.delete');
+    /**
+     * Лайки
+     */
+    Route::group(['namespace' => 'Liked', 'prefix'=> 'liked', 'middleware'=> ['auth']], function() {
+        Route::get('/', 'IndexController') ->name ('lk.liked.index');
+        Route::delete('/{post}', 'DeleteController') ->name ('lk.liked.delete');
+    });
+
+    /**
+     * Комменты
+     */
+    Route::group(['namespace' => 'Comment', 'prefix'=>'comment', 'middleware'=> ['auth']], function() {
+        Route::get('/', 'IndexController') ->name ('lk.comment.index');
+        Route::get('/{comment}/edit', 'EditController') ->name ('lk.comment.edit');
+        Route::patch('/{comment}', 'UpdateController') ->name ('lk.comment.update');
+        Route::delete('/{comment}', 'DeleteController') ->name ('lk.comment.delete');
     });
 });
 
 /**
- * Обо мне. Пока не заполнено
+ * Обо мне
  */
-Route::group(['namespace' => 'App\Http\Controllers\I_am', 'prefix' => 'about'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\I_am', 'prefix'=> 'about'], function() {
+
     Route::group(['namespace' => 'About'], function () {
-        Route::get('/', 'IndexController')->name('about.index');
-    });
+            Route::get('/', 'IndexController')->name('about.index');
+        });
+
     Route::group(['namespace' => 'Find_work'], function () {
-        Route::get('/find_work', 'IndexController')->name('about.find_work');
-    });
+             Route::get('/find_work', 'IndexController')->name('about.find_work');
+        });
 });
 
 
 
 
-// Фронтенд. Посты, лайки. Вообще, можно было в апи перекинуть, но пока не за чем - vuejs только слайдер
-Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'posts'], function () {
+
+
+                                        /* Чисто для фронта */
+
+
+/**
+ * Отображение постов
+ */
+Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix'=> 'posts'], function () {
     Route::get('/', 'IndexController')->name('post.index');
     Route::get('/{post}', 'ShowController')->name('post.show');
-    Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
-        Route::post('/', 'StoreController')->name('post.comment.store');
+    Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function() {
+        // post/1/comments - NestedRoute
+        Route::post('/' , 'StoreController')->name('post.comment.store');
     });
 
-    Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function () {
-        Route::post('/', 'StoreController')->name('post.like.store');
+    Route::group(['namespace' => 'Like', 'prefix' => '{post}/likes'], function() {
+        // post/1/comments - NestedRoute
+        Route::post('/' , 'StoreController')->name('post.like.store');
     });
 });
 
 
-// "Категории" на мейн странице
+
+/**
+ * Вкладка "Категории" на мейн.страничке
+ */
 Route::group(['namespace' => 'App\Http\Controllers\Category', 'prefix' => 'categories'], function () {
     Route::get('/', 'IndexController')->name('category.index');
-    Route::group(['namespace' => 'Post', 'prefix' => '{category}/posts'], function () {
-        Route::get('/', 'IndexController')->name('category.post.index');
+    Route::group(['namespace' => 'Post', 'prefix' => '{category}/posts'], function() {
+        //  NastedRoute
+        Route::get('/' , 'IndexController')->name('category.post.index');
     });
 });
 
