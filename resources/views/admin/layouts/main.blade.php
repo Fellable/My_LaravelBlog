@@ -5,6 +5,7 @@
     @vite(['resources/js/admin/app.js'])
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>AdminLTE 3 | Dashboard</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -136,7 +137,9 @@
             elems.forEach(function(elem) {
                 let init = new Switchery(elem);
             });
+            console.log(1);
         }
+
     });
 
 </script>
