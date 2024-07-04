@@ -15,8 +15,8 @@ services:
       context: ./.docker
       dockerfile: nginx.dockerfile
     ports:
-      - ${HTTP_PORT:-85}:85
-      - ${HTTPS_PORT:-4469}:4469
+      - ${HTTP_PORT:-89}:80
+      - ${HTTPS_PORT:-4477}:443
     volumes:
       - ./:/var/www
       - ./.docker/nginx/:/etc/nginx/conf.d/
@@ -34,7 +34,7 @@ services:
           context: ./.docker
           dockerfile: app.dockerfile
       ports:
-          - ${APP_PHP_FPM_PORT:-9005}:9005
+          - ${APP_PHP_FPM_PORT:-9033}:9000
       volumes:
           - ./.docker/app/php.ini:/usr/local/etc/php/php.ini
           - ./:/var/www
@@ -51,14 +51,15 @@ services:
   mysql:
     image: mariadb:10.6
     tty: true
-    command: ['mysqld', '--bind-address=0.0.0.0', '--port=3309']
+    command: ['mysqld', '--bind-address=0.0.0.0', '--port=3365']
     ports:
-        - ${MYSQL_PORT:-3309}:3309
+      - ${MYSQL_PORT:-3365}:3365
     environment:
       MYSQL_DATABASE: crassh
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_PORT: 3365 # Добавьте эту строку
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
