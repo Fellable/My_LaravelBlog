@@ -1,18 +1,29 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\POST\ShowController;
 
 
-Route::group(['namespace' => 'App\Http\Controllers\API\POST', 'prefix' => 'post'], function () {
+
+Route::group(['namespace' => 'App\Http\Controllers\API\POST', 'prefix'=> 'post'], function () {
     Route::get('/{post}', 'ShowController')->name('show.get');
 });
 
+Route::group(['prefix'=> '/admin'], function () {
+    Route::group(['prefix'=> '/post'], function () {
+        Route::get('/{post}', [ShowController::class])->name('show.get');
+    });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+    Route::group(['prefix'=> '/posts'], function () {
+        Route::put('/sort', [PostController::class, 'sort'])->name('api.posts.sort'); // сохраняем место, куда перетянули через sortablejs
+    });
 });
+
+
+
 
 Route::group([
     'middleware' => 'api',
