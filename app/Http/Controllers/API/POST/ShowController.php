@@ -17,10 +17,6 @@ class ShowController extends Controller
 {
     public function __invoke(Post $post)
     {
-        
-
-        
-        
         return new PostShowResourse($post);
     }
 }
