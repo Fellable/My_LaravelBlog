@@ -32,5 +32,16 @@ class PostController extends Controller
         return response()->json(['status' => 'success']);
     }
 
+    public function updateActive(Request $request, Post $post)
+    {
+        $active = $request->input('active');
 
+        if ($active !== null) {
+            $post->active = (bool) $active;
+            $post->save();
+            return response()->json(['status' => 'success']);
+        }
+
+        return response()->json(['status' => 'error', 'message' => 'Invalid active data'], 400);
+    }
 }

@@ -6,23 +6,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\POST\ShowController;
 
 
-
-Route::group(['namespace' => 'App\Http\Controllers\API\POST', 'prefix'=> 'post'], function () {
+Route::group(['namespace' => 'App\Http\Controllers\API\POST', 'prefix' => 'post'], function () {
     Route::get('/{post}', 'ShowController')->name('show.get');
 });
 
-Route::group(['prefix'=> '/admin'], function () {
-    Route::group(['prefix'=> '/post'], function () {
+Route::group(['prefix' => '/admin'], function () {
+    Route::group(['prefix' => '/post'], function () {
         Route::get('/{post}', [ShowController::class])->name('show.get');
     });
 
 
-    Route::group(['prefix'=> '/posts'], function () {
+    Route::group(['prefix' => '/posts'], function () {
         Route::put('/sort', [PostController::class, 'sort'])->name('api.posts.sort'); // сохраняем место, куда перетянули через sortablejs
+        Route::put('/{post}/active', [PostController::class, 'updateActive'])->name('api.posts.active'); // toggle активность поста
     });
 });
-
-
 
 
 Route::group([

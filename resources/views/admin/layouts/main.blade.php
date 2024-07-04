@@ -131,11 +131,12 @@
      * Активирует Switchery - ползунок как на iphone. Вкл / Выкл.
      */
     document.addEventListener('DOMContentLoaded', function() {
-        let elem = document.querySelector('.js-switch');
-        if(elem){
-            let init = new Switchery(elem);
+        let elems = document.querySelectorAll('.js-switch');
+        if (elems.length > 0) {
+            elems.forEach(function(elem) {
+                let init = new Switchery(elem);
+            });
         }
-
     });
 
 </script>
