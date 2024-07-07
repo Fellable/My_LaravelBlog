@@ -9,7 +9,7 @@
                 <div class="row mb-2 ">
                     <div class="col-sm-6 d-flex align-items-center">
                         <h1 class="m-0 mr-2">{{ $tag->title }}</h1>
-                        <a href="{{ route('admin.tag.edit', $tag->id) }}" class="text-success"> Редактировать тэг </a>
+                        <a href="{{ route('admin.tag.edit', $tag->id) }}" class="text-success"> Редактировать тег </a>
                         <form action="{{ route('admin.tag.delete', $tag->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

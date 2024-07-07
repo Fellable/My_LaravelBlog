@@ -24,62 +24,60 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="col-12">
-                </div>
+
                 <div class="row">
-                    <div class="col-6">
-                        <div class="card">
-                            <!-- /.card-header -->
-                            <div class="card-body table-responsive p-0">
-                                <table class="table table-hover text-nowrap">
-                                    <thead>
+                    <div class="card">
+                        <!-- /.card-header -->
+                        <div class="card-body table-responsive p-0">
+                            <table class="table table-hover text-nowrap">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th colspan="3" class="text-center">Действие</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach ($categories as $category)
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Название</th>
-                                        <th colspan="3" class="text-center">Действие</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @foreach ($categories as $category)
-                                        <tr>
-                                            <td>{{ $category->id }}</td>
-                                            <td>{{ $category->title }}</td>
-                                            <td><a href="{{ route('admin.category.show', $category->id) }}"> Просмотреть </a></td>
-                                            <td><a href="{{ route('admin.category.edit', $category->id) }}"
-                                                   class="text-success"> Редактировать категорию </a></td>
-                                            <td>
-                                            <form action="{{ route('admin.category.delete', $category->id) }}" method="POST">
+                                        <td>{{ $category->id }}</td>
+                                        <td>
+                                            <p class="text-wrap">{{ $category->title }}</p>
+                                        </td>
+                                        <td><a href="{{ route('admin.category.show', $category->id) }}">
+                                                Просмотреть </a></td>
+                                        <td><a href="{{ route('admin.category.edit', $category->id) }}"
+                                               class="text-success"> Редактировать категорию </a></td>
+                                        <td>
+                                            <form action="{{ route('admin.category.delete', $category->id) }}"
+                                                  method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent text-danger">
                                                     Удалить
                                                 </button>
                                             </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.card-body -->
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
                         </div>
 
-                        <!-- Small boxes (Stat box) -->
-                        <div class="row">
-                            <div class="col-2">
-                                <a href="{{ route ('admin.category.create') }}" class="btn btn-block btn-primary">Добавить</a>
-                            </div>
 
-
-                        </div>
                     </div>
 
                 </div>
-                <!-- /.row -->
 
-            </div><!-- /.container-fluid -->
+                <div class="row mb-2">
+                    <div class="col-2">
+                        <a href="{{ route ('admin.category.create') }}" class="btn btn-block btn-primary">Добавить</a>
+                    </div>
+                </div>
+            </div>
+
         </section>
-        <!-- /.content -->
+
     </div>
-    <!-- /.content-wrapper -->
+
 @endsection
