@@ -171,39 +171,45 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    let sliderIndex = 2; // Начинаем с 2, так как 1 уже задано
+    document.getElementById('add-slider-item').addEventListener('click', function() {
+    let sliderContainer = document.getElementById('slider-container');
+    let newSliderItem = document.createElement('div');
+    newSliderItem.classList.add('slider-item');
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let sliderIndex = 2; // Начинаем с 2, так как 1 уже задано
-            document.getElementById('add-slider-item').addEventListener('click', function() {
-                let sliderContainer = document.getElementById('slider-container');
-                let newSliderItem = document.createElement('div');
-                newSliderItem.classList.add('slider-item');
+    newSliderItem.innerHTML = `
+    <label> Изображение для слайдера Vuejs №${sliderIndex} </label>
+    <div class="input-group w-50">
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" name="post_images[]">
+            <label class="custom-file-label">Выберите изображение для слайдера</label>
+        </div>
+        <div class="input-group-append">
+            <span class="input-group-text">Загрузить изображение</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label> Титул для слайда Vuejs №${sliderIndex} </label>
+        <input type="text" name="post_titles[]" class="form-control w-25">
+    </div>
+    <div class="form-group">
+        <label> Описание для слайда Vuejs №${sliderIndex} </label>
+        <input type="text" name="post_descriptions[]" class="form-control w-25">
+    </div>
+    `;
+    sliderContainer.appendChild(newSliderItem);
+    sliderIndex++;
+    });
 
-                newSliderItem.innerHTML = `
-                <label> Изображение для слайдера Vuejs №${sliderIndex} </label>
-                <div class="input-group w-50">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" name="post_images[]">
-                        <label class="custom-file-label">Выберите изображение для слайдера</label>
-                    </div>
-                    <div class="input-group-append">
-                        <span class="input-group-text">Загрузить изображение</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label> Титул для слайда Vuejs №${sliderIndex} </label>
-                    <input type="text" name="post_titles[]" class="form-control w-25">
-                </div>
-                <div class="form-group">
-                    <label> Описание для слайда Vuejs №${sliderIndex} </label>
-                    <input type="text" name="post_descriptions[]" class="form-control w-25">
-                </div>
-                `;
-                sliderContainer.appendChild(newSliderItem);
-                sliderIndex++;
-            });
-        });
+    // Отображение имени загруженного файла
+    document.addEventListener('change', function(e) {
+    if (e.target && e.target.matches('.custom-file-input')) {
+    let fileName = e.target.files[0].name;
+    e.target.nextElementSibling.textContent = fileName;
+    }
+    });
+    });
     </script>
-
 @endsection

@@ -52,6 +52,8 @@ class PostService
 
 
             $post = Post::firstOrCreate(['title' => $data['title'],
+
+                    'slug' => $data['slug'],
                     'content' => $data['content'],
                     'additional_tech' => $data['additional_tech'],
                     'small_description' => $data['small_description'],
