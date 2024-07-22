@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Post\StoreRequest;
+use App\Http\Resources\Admin\PostResource;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
@@ -10,6 +12,15 @@ use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
+    public function store(StoreRequest $request)
+    {
+        $data = $request->validationData();
+        $post = Post::create($data);
+        return PostResource::make($post)->resolve();
+
+    }
+
+
     public function sort(Request $request)
     {
         $order = $request->input('order');

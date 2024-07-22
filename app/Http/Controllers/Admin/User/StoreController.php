@@ -12,9 +12,14 @@ class StoreController extends BaseController
 
     public function __invoke(StoreRequest $request)
     {
-        $data = $request->validated();
-        StoreUserJob::dispatch($data);
+        try{
+            $data = $request->validated();
+            StoreUserJob::dispatch($data);
 
             return redirect()->route('admin.user.index');
+        } catch (\Throwable $exception){
+            return $exception;
+        }
+
         }
 }

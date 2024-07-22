@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin\Post;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class StoreRequest extends FormRequest
 {
@@ -24,7 +25,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string',
+            'title' => 'required|string|unique:posts,title',
             'content' => 'required|string',
             'preview_image' => 'required|file',
             'main_image' => 'required|file',
@@ -47,6 +48,7 @@ class StoreRequest extends FormRequest
         return [
             'title.required' => 'Это поле необходимо для заполнения.',
             'title.string' => 'Данные должны соответствовать строчному типу.',
+            'title.unique' => 'Пост с таким Title уже имеется. Это уникальное значение.',
             'content.required' => 'Это поле необходимо для заполнения.',
             'content.string' => 'Данные должны соответствовать строчному типу.',
             'preview_image.required' => 'Это поле необходимо для заполнения.',
@@ -64,7 +66,16 @@ class StoreRequest extends FormRequest
             'post_images.array' => 'Фигня какая-то приключилась',
             'post_descriptions.array' => 'Фигня с post_descriptions',
             'small_description.required' => 'Это поле необходимо для заполнения',
-            'small_description.string' => 'Это должна быть строка',
+            'small_description.string' => 'Это должна быть строка'
         ];
     }
+
+
+    public function passedValidation()
+    {
+        return $this->merge([
+            'slug' => Str::slug($this->title)
+        ]);
+    }
 }
+

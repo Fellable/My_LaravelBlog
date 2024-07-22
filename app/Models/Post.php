@@ -44,4 +44,10 @@ class Post extends Model
     public function postImages(){
         return $this->hasMany(PostImage::class, 'post_id', 'id');
     }
+
+    // Для переопределения того, по какому ключу будет искать Post. По умолчанию везде id
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

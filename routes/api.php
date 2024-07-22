@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\POST\ShowController;
 
+Route::post('/test_posts', [PostController::class, 'store']);
 
 Route::group(['namespace' => 'App\Http\Controllers\API\POST', 'prefix' => 'post'], function () {
     Route::get('/{post}', 'ShowController')->name('show.get');

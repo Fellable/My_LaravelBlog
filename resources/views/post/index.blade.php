@@ -39,7 +39,7 @@
                             </div>
 
 
-                            <a href="{{ route ('post.show', $post->id) }}" class="blog-post-permalink">
+                            <a href="{{ route ('post.show', $post->slug) }}" class="blog-post-permalink">
                                 <h6 class="blog-post-title">{{ $post->title }}</h6>
                                 <span style="color: brown;">{{ $post->small_description }} </span>
                              </a>

@@ -31,9 +31,8 @@ class PostFactory extends Factory
             'additional_tech' => $additional_tech,
             'small_description' =>  $small_description,
             'gitHub' => $gitHub,
-            'queuery' => self::$order++
-
-//            'slug' => Str::slug($title, '-'),
+            'queuery' => self::$order++,
+            'slug' => Str::slug($title, '-')
 //            'preview_image' => $this->faker->imageUrl('public/storage/images', 300, 200),
 //            'category_id' => Category::get()->random()->id,
 //            'isActive' => true,

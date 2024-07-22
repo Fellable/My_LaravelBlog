@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Requests\Admin\Post\StoreRequest;
+use App\Http\Resources\Admin\PostResource;
 
 class StoreController extends BaseController
 {
@@ -11,8 +12,8 @@ class StoreController extends BaseController
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();
-        $this->service->store($data);
 
-            return redirect()->route('admin.post.index');
+        $this->service->store($data);
+        return redirect()->route('admin.post.index');
         }
 }
