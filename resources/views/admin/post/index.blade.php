@@ -24,9 +24,8 @@
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <div class="col-12">
-                </div>
-                <div class="row">
+
+
 
                     <div class="card">
                         <!-- /.card-header -->
@@ -47,13 +46,13 @@
                                         <td>{{ $post->title }}</td>
                                         <td>
                                             <input type="checkbox" class="js-switch post-active switch-input"
-                                                   data-id="{{ $post->id }}" {{ $post->active ? 'checked' : '' }}>
+                                                   data-slug="{{ $post->slug }}" {{ $post->active ? 'checked' : '' }}>
                                         </td>
-                                        <td><a href="{{ route('admin.post.show', $post->id) }}"> Просмотреть </a></td>
-                                        <td><a href="{{ route('admin.post.edit', $post->id) }}" class="text-success">
+                                        <td><a href="{{ route('admin.post.show', $post->slug) }}"> Просмотреть </a></td>
+                                        <td><a href="{{ route('admin.post.edit', $post->slug) }}" class="text-success">
                                                 Редактировать пост </a></td>
                                         <td>
-                                            <form action="{{ route('admin.post.delete', $post->id) }}" method="POST">
+                                            <form action="{{ route('admin.post.delete', $post->slug) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent text-danger">
@@ -70,14 +69,11 @@
                     </div>
 
                     <!-- Small boxes (Stat box) -->
-                    <div class="row">
+                    <div class="row pb-2">
                         <div class="col-2">
                             <a href="{{ route('admin.post.create') }}" class="btn btn-block btn-primary">Добавить</a>
                         </div>
                     </div>
-                </div>
-
-                <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

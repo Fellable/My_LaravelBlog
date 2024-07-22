@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelectorAll('.post-active').forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
-            let postId = this.dataset.id;
+            let postSlug = this.dataset.slug;
             let isActive = this.checked ? 1 : 0;
 
-            fetch(`/api/admin/posts/${postId}/active`, {
+            fetch(`/api/admin/posts/${postSlug}/active`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
