@@ -29,7 +29,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row">
                 <div class="col-12">
-                    <form action=" {{ route('admin.post.update',  $post->id ) }}" method="POST" enctype="multipart/form-data">
+                    <form action=" {{ route('admin.post.update',  $post->slug ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label> Что реализовано</label>
+                            <label> Что реализовано (вставляйте через /  , лень делать отдельную механику </label>
                             <input type="text" name="additional_tech" class="form-control w-25" placeholder="Что реализовано (crud)" value="{{  $post-> additional_tech }}">
 
                             @error('additional_tech')

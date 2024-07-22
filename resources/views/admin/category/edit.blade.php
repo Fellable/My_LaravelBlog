@@ -38,16 +38,14 @@
                         <div class="text-danger"> Это поле необходимо для заполнения {{ $message }}</div>
                         @enderror
 
-                        <input type="submit" class="btn btn-primary" value="Обновить">
+                        <input type="submit" class="btn btn-primary mt-2" value="Обновить">
         </form>
 
                 </div>
                 </div>
 
             </div>
-            <!-- /.row -->
 
-        </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>

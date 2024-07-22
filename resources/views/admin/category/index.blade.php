@@ -45,16 +45,16 @@
                                             <p class="text-wrap">{{ $category->title }}</p>
                                         </td>
                                         <td><a href="{{ route('admin.category.show', $category->id) }}">
-                                                Просмотреть </a></td>
+                                                <i class="fas fa-eye"></i> </a></td>
                                         <td><a href="{{ route('admin.category.edit', $category->id) }}"
-                                               class="text-success"> Редактировать категорию </a></td>
+                                               class="text-success"> <i class="fas fa-pencil-alt"> </i> </a></td>
                                         <td>
                                             <form action="{{ route('admin.category.delete', $category->id) }}"
                                                   method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent text-danger">
-                                                    Удалить
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -69,7 +69,7 @@
 
                 </div>
 
-                <div class="row mb-2">
+                <div class="row pb-2">
                     <div class="col-2">
                         <a href="{{ route ('admin.category.create') }}" class="btn btn-block btn-primary">Добавить</a>
                     </div>

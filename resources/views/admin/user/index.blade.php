@@ -44,15 +44,15 @@
                                         <tr>
                                             <td>{{ $user->id }}</td>
                                             <td>{{ $user->name }}</td>
-                                            <td><a href="{{ route('admin.user.show', $user->id) }}"> Просмотреть  </a></td>
+                                            <td><a href="{{ route('admin.user.show', $user->id) }}"> <i class="fas fa-eye"></i>  </a></td>
                                             <td><a href="{{ route('admin.user.edit', $user->id) }}"
-                                                   class="text-success"> Редактировать юзера </a></td>
+                                                   class="text-success"> <i class="fas fa-pencil-alt"> </i> </a></td>
                                             <td>
                                             <form action="{{ route('admin.user.delete', $user->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent text-danger">
-                                                    Удалить
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                             </td>

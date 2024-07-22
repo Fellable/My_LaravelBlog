@@ -26,7 +26,6 @@
             <div class="container-fluid">
                 <div class="col-12">
                 </div>
-                <div class="row">
 
                     <div class="card">
                         <!-- /.card-header -->
@@ -46,15 +45,15 @@
                                         <td>
                                             <p class="text-wrap">{{ $tag2->title }}</p>
                                         </td>
-                                        <td><a href="{{ route('admin.tag.show', $tag2->id) }}"> Просмотреть </a></td>
+                                        <td><a href="{{ route('admin.tag.show', $tag2->id) }}"> <i class="fas fa-eye"></i> </a></td>
                                         <td><a href="{{ route('admin.tag.edit', $tag2->id) }}"
-                                               class="text-success"> Редактировать тэг </a></td>
+                                               class="text-success"> <i class="fas fa-pencil-alt"> </i> </a></td>
                                         <td>
                                             <form action="{{ route('admin.tag.delete', $tag2->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent text-danger">
-                                                    Удалить
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -67,14 +66,11 @@
                     </div>
 
                     <!-- Small boxes (Stat box) -->
-                    <div class="row">
+                    <div class="row pb-2">
                         <div class="col-2">
                             <a href="{{ route ('admin.tag.create') }}" class="btn btn-block btn-primary">Добавить</a>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.row -->
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->

@@ -48,15 +48,15 @@
                                             <input type="checkbox" class="js-switch post-active switch-input"
                                                    data-slug="{{ $post->slug }}" {{ $post->active ? 'checked' : '' }}>
                                         </td>
-                                        <td><a href="{{ route('admin.post.show', $post->slug) }}"> Просмотреть </a></td>
+                                        <td><a href="{{ route('admin.post.show', $post->slug) }}"> <i class="fas fa-eye"></i> </a></td>
                                         <td><a href="{{ route('admin.post.edit', $post->slug) }}" class="text-success">
-                                                Редактировать пост </a></td>
+                                                <i class="fas fa-pencil-alt"> </i> </a></td>
                                         <td>
                                             <form action="{{ route('admin.post.delete', $post->slug) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="border-0 bg-transparent text-danger">
-                                                    Удалить
+                                                    <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
                                         </td>
