@@ -1,0 +1,227 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "MyLaravelBlog Doc API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api": {},
+        "/api/admin/posts": {
+            "get": {
+                "tags": [
+                    "Admin/Post"
+                ],
+                "summary": "Получение всех постов из админки",
+                "operationId": "0abb06b5b03e9d83e110fc0862bedc59",
+                "requestBody": {},
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Admin/Post"
+                ],
+                "summary": "Изменение очерёдности постов через SortableJs",
+                "operationId": "e0dc8ee8a9442540b307982a0d4535ec",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "description": "Массив объектов, представляющий порядок постов",
+                                "type": "array",
+                                "items": {
+                                    "properties": {
+                                        "id": {
+                                            "description": "ID поста",
+                                            "type": "integer",
+                                            "example": 54
+                                        },
+                                        "position": {
+                                            "description": "Позиция поста",
+                                            "type": "integer",
+                                            "example": 0
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "Статус выполнения запроса",
+                                            "type": "string",
+                                            "example": "success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Некорректные данные",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "description": "Статус выполнения запроса",
+                                            "type": "string",
+                                            "example": "error"
+                                        },
+                                        "message": {
+                                            "description": "Сообщение об ошибке",
+                                            "type": "string",
+                                            "example": "Invalid input data"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ошибка сервера"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/post/{post}": {
+            "get": {
+                "tags": [
+                    "Post"
+                ],
+                "summary": "Показ одного поста",
+                "operationId": "0bc1e1c2130824602c0b538042e0856f",
+                "requestBody": {},
+                "responses": {
+                    "200": {
+                        "description": "Ok"
+                    }
+                }
+            }
+        },
+        "/api/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth - получение JWT"
+                ],
+                "summary": "Получение JWT-токена",
+                "operationId": "e8bda97fbe47048fc48cee733c357440",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "allOf": [
+                                    {
+                                        "properties": {
+                                            "email": {
+                                                "type": "string",
+                                                "example": "you@email.ru"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "you@email.ru"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "token"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "berrer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": 3500
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Некорректные данные",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "description": "Статус выполнения запроса",
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Ошибка сервера"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Admin/Post",
+            "description": "Admin/Post"
+        },
+        {
+            "name": "Post",
+            "description": "Post"
+        },
+        {
+            "name": "Auth - получение JWT",
+            "description": "Auth - получение JWT"
+        }
+    ]
+}

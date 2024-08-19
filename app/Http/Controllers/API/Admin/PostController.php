@@ -28,8 +28,7 @@ class PostController extends Controller
         if (!$order) {
             return response()->json(['status' => 'error', 'message' => 'Invalid order data'], 400);
         }
-        Log::info('Order data received:', $order);
-
+             Log::info('Order data received:', $order);
 
 
         foreach ($order as $item) {
