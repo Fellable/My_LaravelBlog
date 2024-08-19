@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'per_for_file'),
 
     /*
     |--------------------------------------------------------------------------
@@ -106,6 +106,13 @@ return [
 
         'errorlog' => [
             'driver' => 'errorlog',
+            'level' => env('LOG_LEVEL', 'debug'),
+        ],
+
+        'postback_saas_log' => [
+            'driver' => 'custom',
+            'via' => App\Logging\PostbackSaasLog::class,
+            'type' => 'postback_saas',
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
