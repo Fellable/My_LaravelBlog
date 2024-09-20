@@ -1,6 +1,4 @@
 <?php
-
-
 namespace App\Service;
 
 
@@ -12,16 +10,14 @@ use Illuminate\Support\Facades\Storage;
 class PostService
 {
 
-    public function store($data) {
+    public function store($data)
+    {
         try {
             Db::beginTransaction();
             if (isset($data['tag_ids'])) {
                 $tagIds = $data['tag_ids'];
                 unset($data['tag_ids']);
             }
-
-
-
 
 
             /**
@@ -38,17 +34,14 @@ class PostService
             }
 
 
-
             if (isset($data['post_descriptions'])) {
                 $postDescriptions = $data['post_descriptions'];
                 unset($data['post_descriptions']);
             }
 
 
-
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
-
 
 
             $post = Post::firstOrCreate(['title' => $data['title'],
@@ -65,11 +58,9 @@ class PostService
                     'queuery' => $data['queuery']
                 ]
             );
-            if (isset($tagIds)){
+            if (isset($tagIds)) {
                 $post->tags()->attach($tagIds);
             }
-
-
 
 
             if (isset($postImages)) {
@@ -85,7 +76,6 @@ class PostService
             }
 
 
-
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -95,7 +85,8 @@ class PostService
     }
 
 
-    public function update($data, $post) {
+    public function update($data, $post)
+    {
         try {
             Db::beginTransaction();
             if (isset($data['tag_ids'])) {
@@ -103,11 +94,11 @@ class PostService
                 unset($data['tag_ids']);
             }
 
-            if( array_key_exists('preview_image',$data)){
+            if (array_key_exists('preview_image', $data)) {
                 $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             }
 
-            if( array_key_exists('main_image',$data)){
+            if (array_key_exists('main_image', $data)) {
                 $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
             }
 
@@ -119,10 +110,9 @@ class PostService
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
-            abort (500);
+            abort(500);
         }
-
-
         return $post;
     }
 }
+

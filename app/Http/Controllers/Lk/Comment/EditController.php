@@ -14,6 +14,6 @@ class EditController extends Controller
 {
     public function __invoke(Comment $comment)
     {
-      return view('lk.comment.edit', compact('comment'));
+        return view('lk.comment.edit', compact('comment'));
     }
 }

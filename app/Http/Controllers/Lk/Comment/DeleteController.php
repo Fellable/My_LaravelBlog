@@ -14,8 +14,7 @@ class DeleteController extends Controller
 {
     public function __invoke(Comment $comment)
     {
-
         $comment->delete();
-      return view('lk.comment.index', compact('comment'));
+        return view('lk.comment.index', compact('comment'));
     }
 }

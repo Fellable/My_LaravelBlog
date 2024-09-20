@@ -9,14 +9,10 @@ use App\Models\Tag;
 
 class EditController extends BaseController
 {
-    /**
-     * @param Post $post
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function __invoke(Post $post)
     {
         $categories = Category::all();
         $tags = Tag::all();
-      return view('admin.post.edit', compact ('post', 'categories', 'tags'));
+        return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 }

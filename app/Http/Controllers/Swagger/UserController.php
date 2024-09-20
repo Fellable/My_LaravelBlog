@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
  * * @OA\Post(
  *      path="/api/auth/login",
  *      summary="Получение JWT-токена",
- *      tags={"User - получение JWT"},
+ *      tags={"User"},
  *
  *      @OA\RequestBody(
  *          @OA\JsonContent(

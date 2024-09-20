@@ -15,10 +15,8 @@ class UpdateController extends Controller
 {
     public function __invoke(UpdateRequest $request, Comment $comment)
     {
-    $data = $request->validated();
-    $comment->update($data);
-
-
-      return redirect()->route('lk.comment.index');
+        $data = $request->validated();
+        $comment->update($data);
+        return redirect()->route('lk.comment.index');
     }
 }

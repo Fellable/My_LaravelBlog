@@ -63,12 +63,18 @@
                                     <br>
                                 </div>
                                 <div class="m-2 d-flex" style="flex-wrap: wrap;">
-                                    <span class="mr-2"> Реализовано:  </span>
-                                    @foreach(explode('/', $post->additional_tech) as $post_tech)
-                                        <div class="rounded pl-1 pr-1 mr-1 mb-2"
-                                             style="background-color: snow; border: 1px solid #FFA52F;">  {{ $post_tech }} </div>
-                                    @endforeach
+                                    <span class="mr-2"> Реализовано: </span>
+                                    @if(!empty($post->additional_tech))
+                                        @foreach(explode('/', $post->additional_tech) as $post_tech)
+                                            <div class="rounded pl-1 pr-1 mr-1 mb-2" style="background-color: snow; border: 1px solid #FFA52F;">
+                                                {{ $post_tech }}
+                                            </div>
+                                        @endforeach
+                                    @else
+                                        <div>Информация не предоставлена</div>
+                                    @endif
                                 </div>
+
 
                                 <div class="m-2 d-flex" style="flex-wrap: wrap;">
                                     <span class="mr-2"> GitHub ссылка:  </span>

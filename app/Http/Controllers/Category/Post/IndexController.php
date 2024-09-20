@@ -13,15 +13,12 @@ class IndexController extends Controller
 {
     public function __invoke(Category $category)
     {
-$posts = $category->posts;
-/*
- * Можно использовать фильтр
- * $posts = $category->posts()->filter();
- */
-
+        $posts = $category->posts;
+        /*
+         * Можно использовать фильтр
+         * $posts = $category->posts()->filter();
+         */
         $posts = $category->posts()->paginate(6);
-
-
-     return view('category.post.index', compact ('posts'));
+        return view('category.post.index', compact('posts'));
     }
 }

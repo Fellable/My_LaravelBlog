@@ -8,8 +8,6 @@ use App\Models\Category;
 
 class StoreController extends Controller
 {
-
-
     public function __invoke(StoreRequest $request)
     {
         $data = $request->validated();

@@ -17,8 +17,6 @@ class IndexController extends Controller
         $countLikedPosts = count($likedPosts);
         $comments = auth()->user()->comments;
         $countComments = count($comments);
-
-
-      return view('lk.main.index', compact('countLikedPosts', 'countComments'));
+        return view('lk.main.index', compact('countLikedPosts', 'countComments'));
     }
 }
