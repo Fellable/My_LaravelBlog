@@ -11,6 +11,7 @@ use App\Models\Post;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 
 class IndexController extends Controller
@@ -19,16 +20,23 @@ class IndexController extends Controller
     {
         $data = $request->validated();
         $filter = app()->make(PostFilter::class, ['queryParams' => array_filter($data)]);
-        $posts = Post::filter($filter)->orderBy('queuery', 'asc')->paginate(6);
 
-        $countPosts = Post::all()->count();
-        $tags = Tag::all();
+        // Заранее загружаем теги и лайки для постов
+        $posts = Post::with('tags', 'likedUsers')->filter($filter)->orderBy('queuery', 'asc')->paginate(6);
+        $countPosts = Post::count();
 
+        // Кешируем теги
+        $tags = Cache::remember('tags', 60, function () {
+            return Tag::all();
+        });
+
+        // Проверяем количество постов и готовим рандомные посты
         if ($countPosts >= 4) {
-            $randomPosts = Post::get()->random(4);
-            $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
-        } else dd('Запустите сидер на заполнение БД. Ну или вручную из админки создайте 4 поста /admin');
-
+            $randomPosts = Post::inRandomOrder()->limit(4)->get();
+            $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->limit(4)->get();
+        } else {
+            dd('Запустите сидер на заполнение БД или создайте вручную 4 поста /admin');
+        }
 
         return view('post.index', compact('posts', 'tags', 'randomPosts', 'likedPosts', 'countPosts'));
     }
