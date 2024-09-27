@@ -9,7 +9,7 @@
                     @foreach ($posts as $post)
                         <div class="col-md-4 fetured-post blog-post" data-aos="fade-up">
                             <div class="blog-post-thumbnail-wrapper">
-                                <img style="border: 1px solid black;" src="{{ 'storage/app/public/'.$post->preview_image }}" alt="blog post">
+                                <img style="border: 1px solid black;" src="{{ asset('storage/' . $post->preview_image) }}" alt="blog post">
                             </div>
                             <div class="d-flex justify-content-between">
                                 <p class="blog-post-category">{{ $post->category->title }}</p>
