@@ -59,13 +59,14 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_PORT: 3365 # Добавьте эту строку
+      MYSQL_PORT: 3365
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
       - db:/var/lib/mysql
     networks:
       - laravel.test
+    restart: always
 
 
 
