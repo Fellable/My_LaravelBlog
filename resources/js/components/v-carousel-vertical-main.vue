@@ -1,8 +1,6 @@
 <template>
-
     <div style="display:flex; justify-content: space-between;">
         <div class="slick_track" style="border: none;">
-
         </div>
         <div class="right" style="border: none;">
             <v-carousel-vertical-title
@@ -11,49 +9,46 @@
         </div>
     </div>
 
-
     <div class="v-main-vertical">
         <div class="left">
-        <div class="slick_list">
-        <div class="slick_track">
-        <div class="item_slick_track">
-            <div class="wrapper-vertical">
-                <div class="target-vertical">
-                </div>
-                <div class="v-carousel-vertical" id="11" :style=" { 'margin-top': '-' + (small_images_margin_top*currentSlideIndex) + 'px' }">
-                    <div class="small-vertical" v-for="num in 1">
-                        <v-carousel-vertical-images-small
-                            v-for="(image, index) in images"
-                            :key="image.id"
-                            :image_data="image"
-                            :index = "index"
-                            @countSlide = "countSlide"
-                            @setSlide = "setSlide"
-                        />
+            <div class="slick_list">
+                <div class="slick_track">
+                    <div class="item_slick_track">
+                        <div class="wrapper-vertical">
+                            <div class="target-vertical">
+                            </div>
+                            <div class="v-carousel-vertical" id="11"
+                                 :style=" { 'margin-top': '-' + (small_images_margin_top*currentSlideIndex) + 'px' }">
+                                <div class="small-vertical" v-for="num in 1">
+                                    <v-carousel-vertical-images-small
+                                        v-for="(image, index) in images"
+                                        :key="image.id"
+                                        :image_data="image"
+                                        :index="index"
+                                        @countSlide="countSlide"
+                                        @setSlide="setSlide"
+                                    />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
-        </div>
-        </div>
         </div>
         <div class="right">
             <div class="pictures-big-vertical-main">
-                <div class="pictures-big-vertical" :style=" { 'margin-top': '-' + (big_image_margin_top * currentSlideIndex) + 'px' }">
+                <div class="pictures-big-vertical"
+                     :style=" { 'margin-top': '-' + (big_image_margin_top * currentSlideIndex) + 'px' }">
                     <div v-for="num in 1">
-                    <v-carousel-vertical-image-big
-                        v-for="image in images"
-                        :key="image.id"
-                        :image_data="image"
-                    />
+                        <v-carousel-vertical-image-big
+                            v-for="image in images"
+                            :key="image.id"
+                            :image_data="image"
+                        />
+                    </div>
                 </div>
-
-                </div>
-
             </div>
-
         </div>
-
     </div>
 
     <div style="display:flex; justify-content: space-between;">
@@ -61,20 +56,20 @@
         </div>
         <div class="right" style="border: none;">
             <button @click="prevSlide" style="margin-top: 5px; margin-right: 5px;
-    border-radius: 3px;"> Назад </button>
+    border-radius: 3px;"> Назад
+            </button>
             <button @click="stopTimer" style="margin-top: 5px; margin-right: 5px;
-    border-radius: 3px;"> Остановить слайдер </button>
+    border-radius: 3px;"> Остановить слайдер
+            </button>
             <button @click="nextSlide" style="margin-top: 5px;
-    border-radius: 3px;"> Далее</button>
+    border-radius: 3px;"> Далее
+            </button>
             <br>
             <v-carousel-vertical-description
                 :image_data="images[currentSlideIndex]"
             />
-
         </div>
     </div>
-
-
 </template>
 
 
@@ -84,9 +79,6 @@ import vCarouselVerticalImageBig from './v-carousel-vertical-image-big.vue'
 import vCarouselVerticalTitle from './v-carousel-vertical-title.vue'
 import VCarouselVerticalDescription from "./v-carousel-vertical-description.vue";
 
-
-
-
 export default {
     name: "v-carousel-vertical-main",
     components: {
@@ -95,9 +87,6 @@ export default {
         vCarouselVerticalImageBig,
         vCarouselVerticalTitle
     },
-
-
-
     data() {
         return {
             currentSlideIndex: 0,
@@ -110,82 +99,57 @@ export default {
             small_images_margin_top: 0,
         }
     },
-
-    props:['images', 'width'],
-
+    props: ['images', 'width'],
     mounted() {
         this.startTimer()
-            Object.keys(this.images).forEach((key) => {
+        Object.keys(this.images).forEach((key) => {
         })
     },
-
     created() {
         this.init_margins()
     },
-
     destroyed() {
         this.stopTimer()
     },
-
     watch: {
         currentTime(time) {
-
             if (time === 0) {
                 this.stopTimer()
             }
         },
-        width(){
+        width() {
             this.init_margins()
         },
     },
 
     methods: {
-
-        init_margins(){
+        // Видимо, мне было очень скучно когда я делал это. Оправдание одно - я был молод в 2020-м году )) Сейчас таким позором не занимаюсь
+        init_margins() {
             if (this.width >= 1624) {
                 this.big_image_margin_top = 510;
                 this.small_images_margin_top = 129.5;
-            }
-
-
-            else  if (this.width >= 1500) {
+            } else if (this.width >= 1500) {
                 this.big_image_margin_top = 510;
                 this.small_images_margin_top = 129.5;
-            }
-
-            else  if (this.width >= 1400) {
+            } else if (this.width >= 1400) {
                 this.big_image_margin_top = 510;
                 this.small_images_margin_top = 129.5;
-            }
-
-            else  if (this.width >= 1324) {
+            } else if (this.width >= 1324) {
                 this.big_image_margin_top = 420;
                 this.small_images_margin_top = 129.5;
-            }
-
-            else  if (this.width >= 1200) {
+            } else if (this.width >= 1200) {
                 this.big_image_margin_top = 390;
                 this.small_images_margin_top = 116.75;
-            }
-
-            else  if (this.width >= 990) {
+            } else if (this.width >= 990) {
                 this.big_image_margin_top = 300;
                 this.small_images_margin_top = 178.5;
-            }
-
-            else  if (this.width >= 754) {
+            } else if (this.width >= 754) {
                 this.big_image_margin_top = 215;
                 this.small_images_margin_top = 116.5;
+            } else {
+                // заглушка
             }
-
-            else{
-
-            }
-
         },
-
-
-
         /**
          * В mounted запускается таймер методом startTimer().
          * Таймер запускается через setInterval с промежутком 3000 ms.
@@ -200,34 +164,18 @@ export default {
                 this.currentTime--
             }, 3000)
         },
-
         stopTimer() {
             clearTimeout(this.timer)
         },
-
-/**
-        getScreens(id) {
-            this.axios.get(`/api/post/${this.$route.params.id}`, {
-                'images': this.images,
-            })
-                .then(res => {
-                    this.images = res.data.data.images
-                })
-        },
-*/
-
-
         reloadTimer() {
             clearTimeout(this.timer);
             this.startTimer()
         },
-
         prevSlide() {
             if (this.currentSlideIndex > 0)
                 this.currentSlideIndex--
             this.reloadTimer();
         },
-
         nextSlide() {
             if (this.currentSlideIndex >= this.count_small - 1) {
                 this.currentSlideIndex = 0
@@ -237,44 +185,40 @@ export default {
                 this.reloadTimer();
             }
         },
-
-        countSlide(){
-            this.count_small ++;
+        countSlide() {
+            this.count_small++;
         },
-
-        setSlide(id){
+        setSlide(id) {
             this.currentSlideIndex = id
             this.reloadTimer();
         }
     },
-    computed: {
-
-    },
-
 }
 </script>
 
 <style lang="scss">
-
+/**
+Тоже ужасная портянка, стыдно за неё, но смысла переписывать нет.
+*/
 @media screen and (min-width: 770px) {
-    .slick_track{
+    .slick_track {
         width: 255px;
     }
-    .left{
-        height: 215px!important;
+    .left {
+        height: 215px !important;
     }
 
-    .target-vertical{
+    .target-vertical {
         height: 98px;
         width: 193px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 265px);
     }
 
-    .pictures-big-vertical-main{
-        height:215px;
+    .pictures-big-vertical-main {
+        height: 215px;
     }
 
     .wrapper-vertical {
@@ -283,24 +227,24 @@ export default {
 }
 
 @media screen and (min-width: 990px) {
-    .slick_track{
+    .slick_track {
         width: 315px;
     }
-    .left{
-        height: 300px!important;
+    .left {
+        height: 300px !important;
     }
 
-    .target-vertical{
+    .target-vertical {
         height: 160px;
         width: 316px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 335px);
     }
 
-    .pictures-big-vertical-main{
-        height:300px;
+    .pictures-big-vertical-main {
+        height: 300px;
     }
 
     .wrapper-vertical {
@@ -310,24 +254,24 @@ export default {
 
 
 @media screen and (min-width: 1200px) {
-    .slick_track{
+    .slick_track {
         width: 255px;
     }
-    .left{
-        height: 390px!important;
+    .left {
+        height: 390px !important;
     }
 
-    .target-vertical{
+    .target-vertical {
         height: 97px;
         width: 192px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 335px);
     }
 
-    .pictures-big-vertical-main{
-        height:390px;
+    .pictures-big-vertical-main {
+        height: 390px;
     }
 
     .wrapper-vertical {
@@ -336,24 +280,24 @@ export default {
 }
 
 @media screen and (min-width: 1324px) {
-    .slick_track{
+    .slick_track {
         width: 255px;
     }
-    .left{
-        height: 420px!important;
+    .left {
+        height: 420px !important;
     }
 
-    .target-vertical{
+    .target-vertical {
         height: 110px;
         width: 216px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 275px);
     }
 
-    .pictures-big-vertical-main{
-        height:420px;
+    .pictures-big-vertical-main {
+        height: 420px;
     }
 
     .wrapper-vertical {
@@ -362,24 +306,24 @@ export default {
 }
 
 @media screen and (min-width: 1400px) {
-    .slick_track{
+    .slick_track {
         width: 255px;
     }
-    .left{
-        height: 510px!important;
+    .left {
+        height: 510px !important;
     }
 
-    .target-vertical{
+    .target-vertical {
         height: 110px;
         width: 216px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 275px);
     }
 
-    .pictures-big-vertical-main{
-        height:510px;
+    .pictures-big-vertical-main {
+        height: 510px;
     }
 
     .wrapper-vertical {
@@ -388,24 +332,24 @@ export default {
 }
 
 @media screen and (min-width: 1500px) {
-    .slick_track{
+    .slick_track {
         width: 255px;
     }
-    .left{
-        height: 510px!important;
+    .left {
+        height: 510px !important;
     }
 
-    .target-vertical{
+    .target-vertical {
         height: 110px;
         width: 216px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 275px);
     }
 
-    .pictures-big-vertical-main{
-        height:510px;
+    .pictures-big-vertical-main {
+        height: 510px;
     }
 
     .wrapper-vertical {
@@ -415,26 +359,26 @@ export default {
 
 
 @media screen and (min-width: 1669px) {
-    .slick_track{
+    .slick_track {
         width: 255px;
     }
 
-    .left{
+    .left {
         overflow: hidden;
-        height: 500px!important;
+        height: 500px !important;
         border: 1px solid green;
     }
-    .target-vertical{
+    .target-vertical {
         height: 110px;
         width: 217px;
     }
 
-    .right{
+    .right {
         width: calc(100% - 275px);
     }
 
-    .pictures-big-vertical-main{
-        height:500px;
+    .pictures-big-vertical-main {
+        height: 500px;
     }
     .wrapper-vertical {
         // max-width: 85%;
@@ -457,27 +401,28 @@ export default {
     margin-bottom: 15px;
 }
 
-.v-main-vertical{
+.v-main-vertical {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.left{
+.left {
     overflow: hidden;
 
     border: 1px solid black;
 }
 
-.slick-list{
+.slick-list {
     position: relative;
     display: block;
     overflow: hidden;
     margin: 0;
     padding: 0;
 }
-.slick_track{
+
+.slick_track {
     display: block;
     opacity: 1;
 
@@ -485,7 +430,7 @@ export default {
 
 }
 
-.target-vertical{
+.target-vertical {
     position: absolute;
     display: block;
     outline: none;
@@ -493,7 +438,7 @@ export default {
 }
 
 
-.right{
+.right {
     position: relative;
 
     margin-bottom: 0;
@@ -501,22 +446,19 @@ export default {
     border: 1px solid black;
 }
 
-.pictures-big-vertical-main{
+.pictures-big-vertical-main {
     position: relative;
     overflow: hidden;
     transition: all ease .5s;
 }
 
-.pictures-big-vertical{
+.pictures-big-vertical {
     transition: all ease .5s;
 }
 
-.smallVertical{
-    display:block;
+.smallVertical {
+    display: block;
 }
 
 </style>
 
-<style scoped>
-
-</style>

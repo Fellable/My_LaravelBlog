@@ -1,17 +1,26 @@
 <template>
-<div class="v-carousel-item">
-
-    <img :src="image_data.url" class="image" id="image" alt=""  />
-        <div class="item__content">
-         <!--   <p> {{ image_data.id }} </p> -->
-
-        </div>
-</div>
-
+    <div class="v-carousel-item"><img :src="image_data.url" class="image" id="image" alt=""/>
+        <div class="item__content"></div>
+    </div>
 </template>
 
-<style scoped>
+<script>
+export default {
+    name: "v-carousel-horizontal-images-small",
+    data: () => ({color: 'red', fontSize: '13px', height: 200, width: '200px'}),
+    props: {
+        image_data: {
+            type: Object, default: () => {
+            }
+        },
+    }
+}
+</script>
 
+<style scoped>
+/**
+Тоже ужасная портянка, стыдно за неё, но смысла переписывать нет.
+*/
 @media screen and (min-width: 120px) {
     .image {
         width: 115px;
@@ -30,13 +39,11 @@
     }
 }
 
-
 @media screen and (min-width: 550px) {
     .image {
         width: 400px;
     }
 }
-
 
 @media screen and (min-width: 770px) {
     .image {
@@ -49,7 +56,6 @@
         width: 700px;
     }
 }
-
 
 @media screen and (min-width: 1200px) {
     .image {
@@ -75,51 +81,8 @@
     }
 }
 
-
 @media screen and (min-width: 1669px) {
     .image {
         width: 1000px;
     }
-}
-
-
-
-
-</style>
-
-<script>
-
-
-export default {
-    name: "v-carousel-horizontal-images-small",
-
-    data: () => ({
-            color: 'red',
-            fontSize: '13px',
-            height: 200,
-            width: '200px'
-    }),
-
-    props: {
-        image_data: {
-            type: Object,
-            default: () => {}
-        },
-
-
-    },
-
-
-    methods: {
-
-    },
-
-    computed: {
-
-    },
-
-
-}
-</script>
-
-
+} </style>

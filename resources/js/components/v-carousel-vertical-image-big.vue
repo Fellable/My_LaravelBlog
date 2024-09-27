@@ -1,10 +1,23 @@
 <template>
-
     <img :src="image_data.url" class="imageOne" id="image" alt="" >
-
 </template>
 
+<script>
+export default {
+    name: "v-carousel-vertical-image-big",
+    props: {
+        image_data: {
+            type: Object,
+            default: () => {}
+        },
+    },
+}
+</script>
+
 <style lang="scss">
+/**
+Тоже ужасная портянка, стыдно за неё, но смысла переписывать нет.
+*/
 @media screen and (min-width: 754px) {
     .imageOne{
         height: 215px;
@@ -56,35 +69,5 @@
 </style>
 
 
-
-<script>
-
-
-export default {
-    name: "v-carousel-vertical-image-big",
-
-
-
-    props: {
-        image_data: {
-            type: Object,
-            default: () => {}
-        },
-
-
-    },
-
-
-    methods: {
-
-    },
-
-    computed: {
-
-    },
-
-
-}
-</script>
 
 

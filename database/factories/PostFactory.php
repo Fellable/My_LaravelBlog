@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\PostImage;
 use App\Models\Tag;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -25,8 +26,8 @@ class PostFactory extends Factory
             'title' => $title,
             'content' => $this->faker->text,
             'category_id' => Category::all()->random()->id,
-            'preview_image' => null,
-            'main_image' => null,
+            'preview_image' => 'images/Main_for_all_seeder.jpg',
+            'main_image' => 'images/Main_for_all_seeder.jpg',
             'technology' => $technology,
             'additional_tech' => $additional_tech,
             'small_description' =>  $small_description,
@@ -34,8 +35,6 @@ class PostFactory extends Factory
             'queuery' => self::$order++,
             'slug' => Str::slug($title, '-')
 //            'preview_image' => $this->faker->imageUrl('public/storage/images', 300, 200),
-//            'category_id' => Category::get()->random()->id,
-//            'isActive' => true,
         ];
     }
 
@@ -43,8 +42,14 @@ class PostFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Post $post) {
-            $tagsIds = Tag::inRandomOrder()->take(rand(2,3))->pluck('id');
+            // Присвоение случайных тегов посту
+            $tagsIds = Tag::inRandomOrder()->take(rand(2, 3))->pluck('id');
             $post->tags()->attach($tagsIds);
+
+            // Создание 4-6 связанных изображений для поста
+            PostImage::factory()->count(rand(4, 6))->create([
+                'post_id' => $post->id,  // Связь с постом
+            ]);
         });
     }
 }

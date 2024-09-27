@@ -1,8 +1,4 @@
 <template>
-
-
-
-
     <div v-if="this.width < 770" >
         <v-carousel-horizontal-main
             :images = images
@@ -24,26 +20,18 @@
             />
         </div>
             <div v-else>
-            Фоточек не будет (index1)
+            Проблемы с фотографиями (из index.vue)
             </div>
     </div>
 </template>
 
 <script>
-import VCarouselVerticalMain from "../../../src/components/v-carousel-vertical-main.vue";
-import VCarouselHorizontalMain from "../../../src/components/v-carousel-horizontal-main.vue";
+import VCarouselVerticalMain from "../components/v-carousel-vertical-main.vue";
+import VCarouselHorizontalMain from "../components/v-carousel-horizontal-main.vue";
 
 
 
 export default {
-
-    /**
-     *     <v-carousel-horisontal
-     :images = images
-     />
-
-     *
-     */
     name: "index",
     components: {
         VCarouselVerticalMain,
@@ -67,7 +55,7 @@ export default {
                 'images': this.images,
             })
                 .then(res => {
-                    this.images = res.data.data.images
+                    this.images = res.data.images
                 })
         },
         checkSize(){
@@ -84,11 +72,5 @@ export default {
         this.checkSize()
         window.addEventListener('resize', this.updateWidth);
     },
-
-
 }
 </script>
-
-<style scoped>
-
-</style>
