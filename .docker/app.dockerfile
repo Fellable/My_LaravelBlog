@@ -2,11 +2,37 @@ FROM php:8.2-fpm
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential libicu-dev libzip-dev libxml2-dev libpng-dev \
-    libjpeg62-turbo-dev libfreetype6-dev libonig-dev locales zip \
-    unzip jpegoptim optipng pngquant gifsicle vim git curl \
-    wget libicu-dev g++ libpq-dev libssl-dev gettext libpng-dev zlib1g-dev \
-    librabbitmq-dev pkg-config
+    build-essential \
+    libicu-dev \
+    libzip-dev \
+    libxml2-dev \
+    libpng-dev \
+    libjpeg62-turbo-dev \
+    libfreetype6-dev \
+    libonig-dev \
+    locales \
+    zip \
+    unzip \
+    jpegoptim \
+    optipng \
+    pngquant \
+    gifsicle \
+    vim \
+    git \
+    curl \
+    wget \
+    libicu-dev \
+    g++ \
+    libpq-dev \
+    libssl-dev \
+    gettext \
+    libpng-dev \
+    zlib1g-dev \
+    librabbitmq-dev \
+    pkg-config \
+&& docker-php-ext-configure gd --with-freetype --with-jpeg \
+&& docker-php-ext-install gd
+
 
 RUN docker-php-ext-configure zip
 
