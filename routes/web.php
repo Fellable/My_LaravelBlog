@@ -32,11 +32,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::group(['namespace' => 'App\Http\Controllers\Admin\Main'], function () {
+    Route::group(['namespace' => 'App\Http\Controllers\Admin\Main', 'middleware' => ['auth', 'admin']], function () {
         Route::get('/', 'IndexController')->name('admin.main.index');
     });
 
-    Route::group(['prefix' => 'category', 'namespace' => 'App\Http\Controllers\Admin\Category', 'middleware' => ['auth', 'admin']], function () {
+    Route::group(['prefix' => 'category', 'namespace' => 'App\Http\Controllers\Admin\Category'], function () {
         Route::get('/', 'IndexController')->name('admin.category.index');
         Route::get('/create', 'CreateController')->name('admin.category.create');
         Route::post('/', 'StoreController')->name('admin.category.store');
@@ -46,7 +46,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{category}', 'DeleteController')->name('admin.category.delete');
     });
 
-    Route::group(['prefix' => 'tags', 'namespace' => 'App\Http\Controllers\Admin\Tag', 'middleware' => ['auth', 'admin']], function () {
+    Route::group(['prefix' => 'tags', 'namespace' => 'App\Http\Controllers\Admin\Tag'], function () {
         Route::get('/', 'IndexController')->name('admin.tag.index');
         Route::get('/create', 'CreateController')->name('admin.tag.create');
         Route::post('/', 'StoreController')->name('admin.tag.store');
@@ -56,7 +56,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{tag}', 'DeleteController')->name('admin.tag.delete');
     });
 
-    Route::group(['prefix' => 'posts', 'namespace' => 'App\Http\Controllers\Admin\Post', 'middleware' => ['auth', 'admin']], function () {
+    Route::group(['prefix' => 'posts', 'namespace' => 'App\Http\Controllers\Admin\Post'], function () {
         Route::get('/', 'IndexController')->name('admin.post.index');
         Route::get('/create', 'CreateController')->name('admin.post.create');
         Route::post('/', 'StoreController')->name('admin.post.store');
@@ -66,8 +66,7 @@ Route::prefix('admin')->group(function () {
         Route::delete('/{post}', 'DeleteController')->name('admin.post.delete');
     });
 
-    //'middleware' => ['auth', 'admin', 'verified']
-    Route::group(['prefix' => 'users', 'namespace' => 'App\Http\Controllers\Admin\User', 'middleware' => ['auth', 'admin']], function () {
+    Route::group(['prefix' => 'users', 'namespace' => 'App\Http\Controllers\Admin\User'], function () {
         Route::get('/', 'IndexController')->name('admin.user.index');
         Route::get('/create', 'CreateController')->name('admin.user.create');
         Route::post('/', 'StoreController')->name('admin.user.store');
