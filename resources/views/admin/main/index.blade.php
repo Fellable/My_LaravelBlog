@@ -46,7 +46,7 @@
                     <div class="small-box bg-success">
 
                         <div class="inner">
-                            <h3> {{ $data['postCount'] }}<sup style="font-size: 20px">%</sup></h3>
+                            <h3> {{ $data['postCount'] }}</h3>
                             <p>Посты</p>
                         </div>
 
@@ -79,7 +79,7 @@
                     <div class="small-box bg-danger">
                         <div class="inner">
                             <h3> {{  $data['tagsCount'] }}</h3>
-                            <p>Тэги</p>
+                            <p>Теги</p>
                         </div>
 
                         <div class="icon">
