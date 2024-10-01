@@ -17,7 +17,7 @@ class AdminPanelAccessTest extends TestCase
     public function test_admin_can_access_admin_page()
     {
         // Создаем админа
-        $admin = User::factory()->create(['role' => 0]);
+        $admin = User::factory()->create(['role' => User::ROLE_ADMIN]);
 
         // Аутентифицируемся как админ
         $this->actingAs($admin);
@@ -37,7 +37,7 @@ class AdminPanelAccessTest extends TestCase
     public function test_non_admin_gets_404_on_admin_page()
     {
         // Создаем обычного пользователя
-        $user = User::factory()->create(['role' => 1]);
+        $user = User::factory()->create(['role' =>  User::ROLE_READER]);
 
         // Аутентифицируемся как обычный пользователь
         $this->actingAs($user);

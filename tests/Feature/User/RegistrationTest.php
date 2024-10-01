@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\User;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -47,7 +48,7 @@ class RegistrationTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'email' => 'testuser@example.com',
-            'role' => 0, // 0 = админ
+            'role' => User::ROLE_ADMIN
         ]);
     }
 

@@ -24,7 +24,6 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
         return [
             self::ROLE_ADMIN => 'Админ',
             self::ROLE_READER => 'Читатель',
-
         ];
     }
 
