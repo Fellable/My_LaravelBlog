@@ -32,7 +32,7 @@ vite
 3) Фабрики для заполнения фейк-постами.
 4) Telescope. В запросах не более 1 дубликата (лень). Если запускаете на Windows - долгая подгрузка за счёт Docker. https://*sitename*:4477/telescope 
 5) Пагинация постов
-6) Swagger + JWT.
+6) Swagger + JWT. https://*sitename*:4477/api/documentation/
 7) JWT-auth для api запросов. Получить токен по https://*sitename*:4477/api/auth/login
 8) LaravelDebug для дебага. 
 9) Sentry для логирования и дебага запросов (по умолчанию закомментирован. В AppServiceProvider раскомментируем код в boot. Добавляем ключ в .env, готово).
