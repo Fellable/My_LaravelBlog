@@ -6,7 +6,6 @@ use App\Mail\User\PasswordMail;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
@@ -39,10 +38,10 @@ class StoreUserJob implements ShouldQueue
      */
     public function handle()
     {
-        $password = Str::random( 10);
+        $password = Str::random(10);
         $this->data['password'] = Hash::make($password);
-        $user =   User::firstOrCreate($this->data);
-        Mail::to( $this->data['email'])->send(new PasswordMail($password));
+        $user = User::firstOrCreate($this->data);
+        Mail::to($this->data['email'])->send(new PasswordMail($password));
         event(new Registered($user));
     }
 }

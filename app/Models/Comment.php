@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
     protected $table = 'comments';
+
     protected $guarded = false;
 
     public function user()
@@ -17,8 +19,8 @@ class Comment extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-
-    public function getDateAsCarbonAttribute() {
+    public function getDateAsCarbonAttribute()
+    {
         return Carbon::parse($this->created_at);
     }
 }

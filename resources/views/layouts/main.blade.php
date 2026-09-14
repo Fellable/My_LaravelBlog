@@ -11,11 +11,15 @@
     <link rel="stylesheet" href="{{ asset('assets/vendors/font-awesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/aos/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+
+
     <script src="{{ asset('assets/vendors/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/loader.js') }}"></script>
 </head>
 <body>
 <div class="edica-loader"></div>
+
 <header class="edica-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -28,10 +32,10 @@
                      <li class="nav-item">
             <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/CrashLogo1.png') }}" alt="Crassh" style="height: 75px;"></a>
                     </li>
-                    
+
                     <li class="nav-item" style="align-items: center;
     display: flex;">
-                        <a class="nav-link" href=" {{ route('main.index') }}"> Мои проекты </a>
+                        <a class="nav-link" href=" {{ route('main.index') }}">  {{ __('messages.my_projects') }} // Мои проекты </a>
                     </li>
 
 
@@ -49,7 +53,7 @@
                         <a class="nav-link" href=" {{ route('admin.main.index') }}" style="align-items: center;
     display: flex;"> Админка</a>
                     </li>
-                    
+
                                         <li class="nav-item" style="align-items: center;
     display: flex;">
                         <a class="nav-link" href=" {{ route('about.index') }}" > Обо мне (ищу работу)</a>
@@ -69,11 +73,25 @@
                         </li>
                     @endauth
                 </ul>
-                <ul class="navbar-nav mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="flag-icon flag-icon-squared rounded-circle flag-icon-ru"></span> Rus</a>
-                    </li>
-                </ul>
+
+                <div class="col-md-3">
+                    <div class="dropdown footer-country-dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="footerCountryDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="flag-icon flag-icon-{{ session('locale', 'ru') === 'ru' ? 'ru' : 'us' }} flag-icon-squared"></span>
+                            {{ session('locale', 'ru') === 'ru' ? 'Русский' : 'English' }}
+                            <i class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="footerCountryDropdown">
+                            <a class="dropdown-item " href="{{ route('set.language', ['locale' => 'ru']) }}">
+                                <span class="flag-icon flag-icon-ru flag-icon-squared"></span> Русский
+                            </a>
+                            <a class="dropdown-item " href="{{ route('set.language', ['locale' => 'en']) }}">
+                                <span class="flag-icon flag-icon-us flag-icon-squared"></span> English
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </nav>
     </div>

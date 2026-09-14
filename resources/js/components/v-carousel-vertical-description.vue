@@ -1,20 +1,18 @@
 <template>
-    {{ $attrs['image_data']['description'] }}
+    {{ $attrs.image_data.description }}
 </template>
-<script>
 
+<script>
 export default {
-    name: "v-carousel-vertical-description",
+    name: 'v-carousel-vertical-description',
+    image_data: {
+        type: Object,
+        default: () => {},
+    },
     data() {
-        return{
+        return {
             number: 0,
         }
     },
-    image_data: {
-            type: Object,
-            default: () => {}
-        },
 }
 </script>
-
-

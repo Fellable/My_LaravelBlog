@@ -181,7 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-//        Sentry\Laravel\ServiceProvider::class,
+        //        Sentry\Laravel\ServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -211,7 +211,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-//        'Sentry' => Sentry\Laravel\Facade::class,
+        //        'Sentry' => Sentry\Laravel\Facade::class,
     ])->toArray(),
 
 ];

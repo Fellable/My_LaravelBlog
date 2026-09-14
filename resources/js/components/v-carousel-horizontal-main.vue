@@ -1,8 +1,10 @@
 <template>
     <div class="v-carousel-main">
         <div class="wrapper-horizontal">
-            <div class="v-carousel-horizontal"
-                 :style=" { 'margin-left': '-' + (images_margin_left*currentSlideIndex) + '%' }">
+            <div
+                class="v-carousel-horizontal"
+                :style="{ 'margin-left': `-${images_margin_left * currentSlideIndex}%` }"
+            >
                 <v-carousel-horizontal-images-small
                     v-for="image in images"
                     :key="image.id"
@@ -10,14 +12,18 @@
                 />
             </div>
         </div>
-
-
     </div>
-    <button @click="prevSlide" style="margin-top: 5px; margin-right: 5px;
-    border-radius: 3px;"> Назад
+    <button
+        style="margin-top: 5px; margin-right: 5px; border-radius: 3px"
+        @click="prevSlide"
+    >
+        Назад
     </button>
-    <button @click="nextSlide" style="margin-top: 5px;
-    border-radius: 3px;"> Далее
+    <button
+        style="margin-top: 5px; border-radius: 3px"
+        @click="nextSlide"
+    >
+        Далее
     </button>
 </template>
 
@@ -25,11 +31,10 @@
 import vCarouselHorizontalImagesSmall from './v-carousel-horizontal-images-small.vue'
 
 export default {
-    name: "v-carousel-horizontal-main",
+    name: 'v-carousel-horizontal-main',
     components: {
-        vCarouselHorizontalImagesSmall
+        vCarouselHorizontalImagesSmall,
     },
-
     data() {
         return {
             currentSlideIndex: 0,
@@ -43,12 +48,9 @@ export default {
     mounted() {
         this.startTimer()
     },
-
     created() {
         this.init_margins()
     },
-
-
     destroyed() {
         this.stopTimer()
     },
@@ -58,7 +60,6 @@ export default {
                 this.stopTimer()
             }
         },
-
         width() {
             this.init_margins()
         },
@@ -86,53 +87,54 @@ export default {
 
 
         reloadTimer() {
-            clearTimeout(this.timer);
+            clearTimeout(this.timer)
             this.startTimer()
         },
 
         prevSlide() {
-            if (this.currentSlideIndex > 0)
+            if (this.currentSlideIndex > 0) {
                 this.currentSlideIndex--
-            this.reloadTimer();
+            }
+            this.reloadTimer()
         },
 
         nextSlide() {
             if (this.currentSlideIndex >= this.images.length - 1) {
                 this.currentSlideIndex = 0
-                this.reloadTimer();
+                this.reloadTimer()
             } else {
                 this.currentSlideIndex++
-                this.reloadTimer();
+                this.reloadTimer()
             }
         },
 
         // Слабо помню, что я там в 2020-м году за портянку придумывал и зачем, vuejs осваивал :)
         init_margins() {
             if (this.width >= 1624) {
-                this.images_margin_left = 100.25;
+                this.images_margin_left = 100.25
             } else if (this.width >= 1500) {
-                this.images_margin_left = 100.25;
+                this.images_margin_left = 100.25
             } else if (this.width >= 1400) {
-                this.images_margin_left = 100.25;
+                this.images_margin_left = 100.25
             } else if (this.width >= 1324) {
-                this.images_margin_left = 100.25;
+                this.images_margin_left = 100.25
             } else if (this.width >= 1200) {
-                this.images_margin_left = 100.25;
+                this.images_margin_left = 100.25
             } else if (this.width >= 990) {
-                this.images_margin_left = 100.25;
+                this.images_margin_left = 100.25
             } else if (this.width >= 754) {
-                this.images_margin_left = 100.5;
+                this.images_margin_left = 100.5
             } else if (this.width >= 550) {
-                this.images_margin_left = 100.5;
+                this.images_margin_left = 100.5
             } else if (this.width >= 400) {
-                this.images_margin_left = 100.75;
+                this.images_margin_left = 100.75
             } else if (this.width >= 300) {
-                this.images_margin_left = 100.75;
+                this.images_margin_left = 100.75
             } else if (this.width >= 120) {
-                this.images_margin_left = 101.5;
+                this.images_margin_left = 101.5
             } else {
             }
-        }
+        },
     },
 }
 </script>
@@ -259,13 +261,12 @@ export default {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    transition: all ease .5s;
+    transition: all ease 0.5s;
 }
 
 .v-carousel-horizontal {
     display: flex;
-    transition: all ease .5s;
+    transition: all ease 0.5s;
     margin-bottom: 15px;
 }
 </style>
-

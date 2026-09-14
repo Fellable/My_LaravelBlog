@@ -36,10 +36,10 @@ class PostCreateTest extends TestCase
             'preview_image' => UploadedFile::fake()->image('preview.jpg'),
             'main_image' => UploadedFile::fake()->image('main.jpg'),
             'small_description' => 'Описание',
-            'additional_tech'=> 'Доп технологии',
-            'technology'=> 'Основная технология',
-            'gitHub'=> 'empty',
-            'queuery'=> '1',
+            'additional_tech' => 'Доп технологии',
+            'technology' => 'Основная технология',
+            'gitHub' => 'empty',
+            'queuery' => '1',
         ];
 
         $response = $this->post(route('admin.post.store'), $data);
@@ -62,7 +62,6 @@ class PostCreateTest extends TestCase
 
         // Убедимся, что пост был создан
         $this->assertDatabaseHas('posts', ['title' => 'New Post']);
-
 
         // Проверяем редирект после создания поста
         $response->assertRedirect(route('admin.post.index'));

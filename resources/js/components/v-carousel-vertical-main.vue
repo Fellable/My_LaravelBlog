@@ -1,8 +1,7 @@
 <template>
-    <div style="display:flex; justify-content: space-between;">
-        <div class="slick_track" style="border: none;">
-        </div>
-        <div class="right" style="border: none;">
+    <div style="display: flex; justify-content: space-between">
+        <div class="slick_track" style="border: none"></div>
+        <div class="right" style="border: none">
             <v-carousel-vertical-title
                 :image_data="images[currentSlideIndex]"
             />
@@ -15,11 +14,13 @@
                 <div class="slick_track">
                     <div class="item_slick_track">
                         <div class="wrapper-vertical">
-                            <div class="target-vertical">
-                            </div>
-                            <div class="v-carousel-vertical" id="11"
-                                 :style=" { 'margin-top': '-' + (small_images_margin_top*currentSlideIndex) + 'px' }">
-                                <div class="small-vertical" v-for="num in 1">
+                            <div class="target-vertical"></div>
+                            <div
+                                id="11"
+                                class="v-carousel-vertical"
+                                :style="{ 'margin-top': `-${small_images_margin_top * currentSlideIndex}px` }"
+                            >
+                                <div v-for="num in 1" class="small-vertical">
                                     <v-carousel-vertical-images-small
                                         v-for="(image, index) in images"
                                         :key="image.id"
@@ -37,8 +38,10 @@
         </div>
         <div class="right">
             <div class="pictures-big-vertical-main">
-                <div class="pictures-big-vertical"
-                     :style=" { 'margin-top': '-' + (big_image_margin_top * currentSlideIndex) + 'px' }">
+                <div
+                    class="pictures-big-vertical"
+                    :style="{ 'margin-top': `-${big_image_margin_top * currentSlideIndex}px` }"
+                >
                     <div v-for="num in 1">
                         <v-carousel-vertical-image-big
                             v-for="image in images"
@@ -51,18 +54,26 @@
         </div>
     </div>
 
-    <div style="display:flex; justify-content: space-between;">
-        <div class="slick_track" style="border: none;">
-        </div>
-        <div class="right" style="border: none;">
-            <button @click="prevSlide" style="margin-top: 5px; margin-right: 5px;
-    border-radius: 3px;"> Назад
+    <div style="display: flex; justify-content: space-between">
+        <div class="slick_track" style="border: none"></div>
+        <div class="right" style="border: none">
+            <button
+                style="margin-top: 5px; margin-right: 5px; border-radius: 3px"
+                @click="prevSlide"
+            >
+                Назад
             </button>
-            <button @click="stopTimer" style="margin-top: 5px; margin-right: 5px;
-    border-radius: 3px;"> Остановить слайдер
+            <button
+                style="margin-top: 5px; margin-right: 5px; border-radius: 3px"
+                @click="stopTimer"
+            >
+                Остановить слайдер
             </button>
-            <button @click="nextSlide" style="margin-top: 5px;
-    border-radius: 3px;"> Далее
+            <button
+                style="margin-top: 5px; border-radius: 3px"
+                @click="nextSlide"
+            >
+                Далее
             </button>
             <br>
             <v-carousel-vertical-description
@@ -71,21 +82,19 @@
         </div>
     </div>
 </template>
-
-
 <script>
 import vCarouselVerticalImagesSmall from './v-carousel-vertical-images-small.vue'
 import vCarouselVerticalImageBig from './v-carousel-vertical-image-big.vue'
 import vCarouselVerticalTitle from './v-carousel-vertical-title.vue'
-import VCarouselVerticalDescription from "./v-carousel-vertical-description.vue";
+import VCarouselVerticalDescription from './v-carousel-vertical-description.vue'
 
 export default {
-    name: "v-carousel-vertical-main",
+    name: 'v-carousel-vertical-main',
     components: {
         VCarouselVerticalDescription,
         vCarouselVerticalImagesSmall,
         vCarouselVerticalImageBig,
-        vCarouselVerticalTitle
+        vCarouselVerticalTitle,
     },
     data() {
         return {
@@ -102,8 +111,7 @@ export default {
     props: ['images', 'width'],
     mounted() {
         this.startTimer()
-        Object.keys(this.images).forEach((key) => {
-        })
+        Object.keys(this.images).forEach(key => {})
     },
     created() {
         this.init_margins()
@@ -126,26 +134,26 @@ export default {
         // Видимо, мне было очень скучно когда я делал это. Оправдание одно - я был молод в 2020-м году )) Сейчас таким позором не занимаюсь
         init_margins() {
             if (this.width >= 1624) {
-                this.big_image_margin_top = 510;
-                this.small_images_margin_top = 129.5;
+                this.big_image_margin_top = 510
+                this.small_images_margin_top = 129.5
             } else if (this.width >= 1500) {
-                this.big_image_margin_top = 510;
-                this.small_images_margin_top = 129.5;
+                this.big_image_margin_top = 510
+                this.small_images_margin_top = 129.5
             } else if (this.width >= 1400) {
-                this.big_image_margin_top = 510;
-                this.small_images_margin_top = 129.5;
+                this.big_image_margin_top = 510
+                this.small_images_margin_top = 129.5
             } else if (this.width >= 1324) {
-                this.big_image_margin_top = 420;
-                this.small_images_margin_top = 129.5;
+                this.big_image_margin_top = 420
+                this.small_images_margin_top = 129.5
             } else if (this.width >= 1200) {
-                this.big_image_margin_top = 390;
-                this.small_images_margin_top = 116.75;
+                this.big_image_margin_top = 390
+                this.small_images_margin_top = 116.75
             } else if (this.width >= 990) {
-                this.big_image_margin_top = 300;
-                this.small_images_margin_top = 178.5;
+                this.big_image_margin_top = 300
+                this.small_images_margin_top = 178.5
             } else if (this.width >= 754) {
-                this.big_image_margin_top = 215;
-                this.small_images_margin_top = 116.5;
+                this.big_image_margin_top = 215
+                this.small_images_margin_top = 116.5
             } else {
                 // заглушка
             }
@@ -168,30 +176,31 @@ export default {
             clearTimeout(this.timer)
         },
         reloadTimer() {
-            clearTimeout(this.timer);
+            clearTimeout(this.timer)
             this.startTimer()
         },
         prevSlide() {
-            if (this.currentSlideIndex > 0)
+            if (this.currentSlideIndex > 0) {
                 this.currentSlideIndex--
-            this.reloadTimer();
+            }
+            this.reloadTimer()
         },
         nextSlide() {
             if (this.currentSlideIndex >= this.count_small - 1) {
                 this.currentSlideIndex = 0
-                this.reloadTimer();
+                this.reloadTimer()
             } else {
                 this.currentSlideIndex++
-                this.reloadTimer();
+                this.reloadTimer()
             }
         },
         countSlide() {
-            this.count_small++;
+            this.count_small++
         },
         setSlide(id) {
             this.currentSlideIndex = id
-            this.reloadTimer();
-        }
+            this.reloadTimer()
+        },
     },
 }
 </script>
@@ -397,7 +406,7 @@ export default {
 
 .v-carousel-vertical {
     display: block;
-    transition: all ease .5s;
+    transition: all ease 0.5s;
     margin-bottom: 15px;
 }
 
@@ -449,11 +458,11 @@ export default {
 .pictures-big-vertical-main {
     position: relative;
     overflow: hidden;
-    transition: all ease .5s;
+    transition: all ease 0.5s;
 }
 
 .pictures-big-vertical {
-    transition: all ease .5s;
+    transition: all ease 0.5s;
 }
 
 .smallVertical {
@@ -461,4 +470,3 @@ export default {
 }
 
 </style>
-

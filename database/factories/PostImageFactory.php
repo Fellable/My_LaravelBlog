@@ -11,11 +11,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class PostImageFactory extends Factory
 {
     protected $model = PostImage::class;
+
     public function definition(): array
     {
         // Используем случайный файл из 0.jpg, 1.jpg, 2.jpg и т.д.
         $fileIndex = $this->faker->numberBetween(0, 3);
-        $filePath = 'images/' . $fileIndex . '.jpg';
+        $filePath = 'images/'.$fileIndex.'.jpg';
 
         return [
             'file_path' => $filePath,

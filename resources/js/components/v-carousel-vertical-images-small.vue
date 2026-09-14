@@ -1,32 +1,34 @@
 <template>
     <div class="v-carousel-item">
-        <img @click="$emit('setSlide', $attrs['index'])" :src="image_data.url" class="item_slick_track" id="image"
-             alt=""/>
+        <img
+            id="image"
+            :src="image_data.url"
+            class="item_slick_track"
+            alt=""
+            @click="$emit('setSlide', $attrs.index)"
+        >
     </div>
 </template>
 
 <script>
 export default {
-    name: "v-carousel-vertical-images-small",
-
+    name: 'v-carousel-vertical-images-small',
+    props: {
+        image_data: {
+            type: Object,
+            default: () => {},
+        },
+    },
+    emits: ['countSlide', 'setSlide'],
     data: () => ({
         color: 'red',
         fontSize: '13px',
         height: 200,
-        width: '200px'
+        width: '200px',
     }),
-    props: {
-        image_data: {
-            type: Object,
-            default: () => {
-            }
-        },
-    },
-    emits: ['countSlide', 'setSlide'],
     mounted() {
         this.$emit('countSlide')
-    }
-
+    },
 }
 </script>
 
@@ -39,4 +41,3 @@ export default {
     border: 1px solid grey;
 }
 </style>
-

@@ -1,6 +1,6 @@
 <?php
-namespace App\Service;
 
+namespace App\Service;
 
 use App\Models\Post;
 use App\Models\PostImage;
@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class PostService
 {
-
     public function store($data)
     {
         try {
@@ -18,7 +17,6 @@ class PostService
                 $tagIds = $data['tag_ids'];
                 unset($data['tag_ids']);
             }
-
 
             /**
              * Если есть картинки для слайдера
@@ -33,35 +31,31 @@ class PostService
                 unset($data['post_titles']);
             }
 
-
             if (isset($data['post_descriptions'])) {
                 $postDescriptions = $data['post_descriptions'];
                 unset($data['post_descriptions']);
             }
 
-
             $data['preview_image'] = Storage::disk('public')->put('/images', $data['preview_image']);
             $data['main_image'] = Storage::disk('public')->put('/images', $data['main_image']);
 
-
             $post = Post::firstOrCreate(['title' => $data['title'],
 
-                    'slug' => $data['slug'],
-                    'content' => $data['content'],
-                    'additional_tech' => $data['additional_tech'],
-                    'small_description' => $data['small_description'],
-                    'preview_image' => $data['preview_image'],
-                    'main_image' => $data['main_image'],
-                    'category_id' => $data['category_id'],
-                    'technology' => $data['technology'],
-                    'gitHub' => $data['gitHub'],
-                    'queuery' => $data['queuery']
-                ]
+                'slug' => $data['slug'],
+                'content' => $data['content'],
+                'additional_tech' => $data['additional_tech'],
+                'small_description' => $data['small_description'],
+                'preview_image' => $data['preview_image'],
+                'main_image' => $data['main_image'],
+                'category_id' => $data['category_id'],
+                'technology' => $data['technology'],
+                'gitHub' => $data['gitHub'],
+                'queuery' => $data['queuery'],
+            ]
             );
             if (isset($tagIds)) {
                 $post->tags()->attach($tagIds);
             }
-
 
             if (isset($postImages)) {
                 foreach ($postImages as $key => $postImage) {
@@ -75,7 +69,6 @@ class PostService
                 }
             }
 
-
             DB::commit();
         } catch (\Exception $exception) {
             DB::rollBack();
@@ -83,7 +76,6 @@ class PostService
             abort(404);
         }
     }
-
 
     public function update($data, $post)
     {
@@ -103,7 +95,7 @@ class PostService
             }
 
             $post->update($data);
-            if (isset ($tagIds)) {
+            if (isset($tagIds)) {
                 $post->tags()->sync($tagIds);
             }
 
@@ -112,7 +104,7 @@ class PostService
             DB::rollBack();
             abort(500);
         }
+
         return $post;
     }
 }
-

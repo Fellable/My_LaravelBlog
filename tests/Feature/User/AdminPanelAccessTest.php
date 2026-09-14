@@ -4,7 +4,6 @@ namespace Tests\Feature\User;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class AdminPanelAccessTest extends TestCase
@@ -32,12 +31,13 @@ class AdminPanelAccessTest extends TestCase
 
     /**
      * @test
+     *
      * @testdox Обычный пользователь получает 404 при попытке зайти на страницу админ-панели
      */
     public function test_non_admin_gets_404_on_admin_page()
     {
         // Создаем обычного пользователя
-        $user = User::factory()->create(['role' =>  User::ROLE_READER]);
+        $user = User::factory()->create(['role' => User::ROLE_READER]);
 
         // Аутентифицируемся как обычный пользователь
         $this->actingAs($user);

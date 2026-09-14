@@ -1,20 +1,6 @@
 <?php
 
-
-
-use App\Http\Controllers\Admin\Category\CreateController;
-use App\Http\Controllers\Admin\Category\DeleteController;
-use App\Http\Controllers\Admin\Category\EditController;
-use App\Http\Controllers\Admin\Category\ShowController;
-use App\Http\Controllers\Admin\Category\StoreController;
-use App\Http\Controllers\Admin\Category\StoreController as StoreControllerAlias;
-use App\Http\Controllers\Admin\Category\UpdateController;
-use App\Http\Controllers\Admin\Main\AdminController;
-use App\Http\Controllers\Admin\Post\PostController;
-use App\Http\Controllers\Admin\Tag\TagController;
-use App\Http\Controllers\Admin\User\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Main\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +12,18 @@ use App\Http\Controllers\Main\IndexController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/debug-config', function () {
+    return config('database.connections.mysql');
+});
+
+Route::get('lang/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'ru'])) {
+        session(['locale' => $locale]);
+    }
+
+    return redirect()->back();
+})->name('set.language');
 
 Route::group(['namespace' => 'App\Http\Controllers\Main'], function () {
     Route::get('/', 'IndexController')->name('main.index');
@@ -77,8 +75,6 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-
-
 // Личный кабинет
 Route::group(['namespace' => 'App\Http\Controllers\Lk', 'prefix' => 'lk', 'middleware' => ['auth']], function () {
     Route::group(['namespace' => 'Main', 'prefix' => 'main'], function () {
@@ -115,6 +111,7 @@ Route::group(['namespace' => 'App\Http\Controllers\I_am', 'prefix' => 'about'], 
 Route::group(['namespace' => 'App\Http\Controllers\Post', 'prefix' => 'posts'], function () {
     Route::get('/', 'IndexController')->name('post.index');
     Route::get('/{post}', 'ShowController')->name('post.show');
+    Route::get('/{post}/gif', [\App\Http\Controllers\Post\ShowController::class, 'gif_post'])->name('post_gif.show');
 
     Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'], function () {
         Route::post('/', 'StoreController')->name('post.comment.store');

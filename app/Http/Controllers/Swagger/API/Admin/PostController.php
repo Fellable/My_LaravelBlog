@@ -4,30 +4,32 @@ namespace App\Http\Controllers\Swagger\API\Admin;
 
 use App\Http\Controllers\Controller;
 
-
 //
 
 /**
- *
- *
  *  @OA\Put(
  *      path="/api/admin/posts/{post}/active",
  *      summary="Изменение активности поста",
  *      tags={"Admin/Post"},
  *      security={{ "bearerAuth": {} }},
+ *
  *      @OA\Parameter(
  *          name="post",
  *          in="path",
  *          required=true,
  *          description="Slug поста",
+ *
  *          @OA\Schema(
  *              type="string"
  *          )
  *      ),
+ *
  *      @OA\RequestBody(
  *          required=true,
+ *
  *          @OA\JsonContent(
  *              type="object",
+ *
  *              @OA\Property(
  *                  property="active",
  *                  type="boolean",
@@ -36,11 +38,14 @@ use App\Http\Controllers\Controller;
  *              )
  *          )
  *      ),
+ *
  *      @OA\Response(
  *          response=200,
  *          description="Успешное изменение статуса активности",
+ *
  *          @OA\JsonContent(
  *              type="object",
+ *
  *              @OA\Property(
  *                  property="status",
  *                  type="string",
@@ -48,11 +53,14 @@ use App\Http\Controllers\Controller;
  *              )
  *          )
  *      ),
+ *
  *      @OA\Response(
  *          response=400,
  *          description="Неверные данные для изменения статуса активности",
+ *
  *          @OA\JsonContent(
  *              type="object",
+ *
  *              @OA\Property(
  *                  property="status",
  *                  type="string",
@@ -67,10 +75,6 @@ use App\Http\Controllers\Controller;
  *      )
  *  )
  *
- *
- *
- *
- *
  * @OA\Put(
  *     path="/api/admin/posts/sort",
  *     summary="Изменение очерёдности постов через SortableJs",
@@ -79,16 +83,21 @@ use App\Http\Controllers\Controller;
  *
  *     @OA\RequestBody(
  *         required=true,
+ *
  *         @OA\MediaType(
  *             mediaType="application/json",
+ *
  *             @OA\Schema(
  *                 type="object",
+ *
  *                 @OA\Property(
  *                     property="order",
  *                     type="array",
  *                     description="Массив объектов, представляющий порядок постов",
+ *
  *                     @OA\Items(
  *                         type="object",
+ *
  *                         @OA\Property(
  *                             property="id",
  *                             type="string",
@@ -110,8 +119,10 @@ use App\Http\Controllers\Controller;
  *     @OA\Response(
  *         response=200,
  *         description="Успешный ответ",
+ *
  *         @OA\JsonContent(
  *             type="object",
+ *
  *             @OA\Property(
  *                 property="status",
  *                 type="string",
@@ -124,8 +135,10 @@ use App\Http\Controllers\Controller;
  *     @OA\Response(
  *         response=400,
  *         description="Некорректные данные",
+ *
  *         @OA\JsonContent(
  *             type="object",
+ *
  *             @OA\Property(
  *                 property="status",
  *                 type="string",
@@ -153,7 +166,6 @@ use App\Http\Controllers\Controller;
  */
 
 //  api/admin/posts
-class PostController extends Controller{
-
+class PostController extends Controller
+{
 }
-

@@ -2,23 +2,24 @@
 
 namespace Database\Factories;
 
-use App\Models\Post;
 use App\Models\Category;
+use App\Models\Post;
 use App\Models\PostImage;
 use App\Models\Tag;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class PostFactory extends Factory
 {
     private static $order = 1;
+
     protected $model = Post::class;
 
     public function definition(): array
     {
         $title = $this->faker->sentence(3);
         $technology = $this->faker->sentence(1);
-        $additional_tech = $this->faker->sentence(1) . '/' . $this->faker->sentence(1). '/' . $this->faker->sentence(1) ;
+        $additional_tech = $this->faker->sentence(1).'/'.$this->faker->sentence(1).'/'.$this->faker->sentence(1);
         $small_description = $this->faker->sentence(15);
         $gitHub = $this->faker->sentence(1);
 
@@ -30,14 +31,13 @@ class PostFactory extends Factory
             'main_image' => 'images/Main_for_all_seeder.jpg',
             'technology' => $technology,
             'additional_tech' => $additional_tech,
-            'small_description' =>  $small_description,
+            'small_description' => $small_description,
             'gitHub' => $gitHub,
             'queuery' => self::$order++,
-            'slug' => Str::slug($title, '-')
-//            'preview_image' => $this->faker->imageUrl('public/storage/images', 300, 200),
+            'slug' => Str::slug($title, '-'),
+            //            'preview_image' => $this->faker->imageUrl('public/storage/images', 300, 200),
         ];
     }
-
 
     public function configure()
     {

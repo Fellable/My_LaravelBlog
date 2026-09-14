@@ -39,7 +39,7 @@ class StoreRequest extends FormRequest
             'post_images' => 'nullable | array',
             'post_titles' => 'nullable | array',
             'post_descriptions' => 'nullable | array',
-            'small_description' => 'required|string'
+            'small_description' => 'required|string',
         ];
     }
 
@@ -66,16 +66,14 @@ class StoreRequest extends FormRequest
             'post_images.array' => 'Фигня какая-то приключилась',
             'post_descriptions.array' => 'Фигня с post_descriptions',
             'small_description.required' => 'Это поле необходимо для заполнения',
-            'small_description.string' => 'Это должна быть строка'
+            'small_description.string' => 'Это должна быть строка',
         ];
     }
-
 
     public function passedValidation()
     {
         return $this->merge([
-            'slug' => Str::slug($this->title)
+            'slug' => Str::slug($this->title),
         ]);
     }
 }
-

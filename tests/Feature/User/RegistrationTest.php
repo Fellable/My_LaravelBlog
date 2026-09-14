@@ -4,13 +4,11 @@ namespace Tests\Feature\User;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class RegistrationTest extends TestCase
 {
     use RefreshDatabase;
-
 
     /**
      * @testdox Гость может регистрироваться
@@ -48,10 +46,9 @@ class RegistrationTest extends TestCase
 
         $this->assertDatabaseHas('users', [
             'email' => 'testuser@example.com',
-            'role' => User::ROLE_ADMIN
+            'role' => User::ROLE_ADMIN,
         ]);
     }
-
 
     /**
      * @testdox Гостя после регистрации редиректит в админку
@@ -69,7 +66,7 @@ class RegistrationTest extends TestCase
 
         if (session()->has('errors')) {
             $errors = session('errors')->getBag('default')->getMessages();
-            $this->fail('Registration form has errors: ' . json_encode($errors));
+            $this->fail('Registration form has errors: '.json_encode($errors));
         }
         $response->assertRedirect('/admin');
 
@@ -78,7 +75,7 @@ class RegistrationTest extends TestCase
     /**
      * @testdox Новый юзер может видеть админку
      */
-    public function test_new_user_can_see_admin_panel ()
+    public function test_new_user_can_see_admin_panel()
     {
         $userData = [
             'name' => 'Test User',
@@ -91,7 +88,7 @@ class RegistrationTest extends TestCase
 
         if (session()->has('errors')) {
             $errors = session('errors')->getBag('default')->getMessages();
-            $this->fail('Registration form has errors: ' . json_encode($errors));
+            $this->fail('Registration form has errors: '.json_encode($errors));
         }
 
         // Аутентификация пользователя

@@ -14,6 +14,3 @@ class BaseController extends Controller
         $this->service = $service;
     }
 }
-
-
-

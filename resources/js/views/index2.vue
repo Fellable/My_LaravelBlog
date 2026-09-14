@@ -1,39 +1,33 @@
 <template>
-
-
-
-
-    <div v-if="this.width < 770" >
+    <div v-if="this.width < 770">
         <v-carousel-horizontal-main
-            :images = images
-            :width = "width"
+            :images="images"
+            :width="width"
         />
     </div>
 
     <div v-else>
-        <div v-if="this.images.length >=4">
+        <div v-if="this.images.length >= 4">
             <v-carousel-vertical-main
-                :images = images
-                :width = "width"
+                :images="images"
+                :width="width"
             />
         </div>
-        <div v-else-if="this.images.length >1">
+        <div v-else-if="this.images.length > 1">
             <v-carousel-horizontal-main
-                :images = images
-                :width = "width"
+                :images="images"
+                :width="width"
             />
         </div>
-            <div v-else>
+        <div v-else>
             Фоточек не будет!!!!!!!
-            </div>
+        </div>
     </div>
 </template>
 
 <script>
-import VCarouselVerticalMain from "../../../src/components/v-carousel-vertical-main.vue";
-import VCarouselHorizontalMain from "../../../src/components/v-carousel-horizontal-main.vue";
-
-
+import VCarouselVerticalMain from '../../../src/components/v-carousel-vertical-main.vue'
+import VCarouselHorizontalMain from '../../../src/components/v-carousel-horizontal-main.vue'
 
 export default {
 
@@ -44,7 +38,7 @@ export default {
 
      *
      */
-    name: "index",
+    name: 'index',
     components: {
         VCarouselVerticalMain,
         VCarouselHorizontalMain,
@@ -61,34 +55,31 @@ export default {
         this.getScreens()
     },
 
-    methods:{
+    methods: {
         getScreens(id) {
-            this.axios.get(`/api/post/${this.$route.params.id}`, {
-                'images': this.images,
-            })
+            this.axios
+                .get(`/api/post/${this.$route.params.id}`, {
+                    images: this.images,
+                })
                 .then(res => {
                     this.images = res.data.data.images
                 })
         },
-        checkSize(){
+        checkSize() {
             this.width = innerWidth
         },
 
         updateWidth() {
-            this.width = window.innerWidth;
+            this.width = window.innerWidth
         },
-
     },
 
     created() {
         this.checkSize()
-        window.addEventListener('resize', this.updateWidth);
+        window.addEventListener('resize', this.updateWidth)
     },
-
-
 }
 </script>
 
 <style scoped>
-
 </style>

@@ -6,9 +6,10 @@ use App\Models\User;
 
 class DeleteController extends BaseController
 {
-    public function __invoke( User $user)
+    public function __invoke(User $user)
     {
         $user->delete();
-      return  redirect()->route('admin.user.index');
+
+        return redirect()->route('admin.user.index');
     }
 }

@@ -9,17 +9,17 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use HasFactory;
     use Filterable;
+    use HasFactory;
     use SoftDeletes;
 
     protected $table = 'posts';
+
     protected $guarded = false;
+
     protected $withCount = ['likedUsers'];
+
     protected $with = ['category'];
-
-
-
 
     public function tags()
     {
@@ -41,7 +41,8 @@ class Post extends Model
         return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 
-    public function postImages(){
+    public function postImages()
+    {
         return $this->hasMany(PostImage::class, 'post_id', 'id');
     }
 

@@ -9,6 +9,7 @@ class IndexController extends BaseController
     public function __invoke()
     {
         $users = User::all();
-      return view('admin.user.index', compact('users'));
+
+        return view('admin.user.index', compact('users'));
     }
 }

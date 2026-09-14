@@ -9,20 +9,25 @@ use App\Http\Controllers\Controller;
  *     path="/api/post/{post}",
  *     summary="Показ одного поста",
  *     tags={"Post"},
+ *
  *     @OA\Parameter(
  *         name="post",
  *         in="path",
  *         required=true,
  *         description="Slug поста",
+ *
  *         @OA\Schema(
  *             type="string"
  *         )
  *     ),
+ *
  *     @OA\Response(
  *          response=200,
  *          description="Успешный ответ",
+ *
  *          @OA\JsonContent(
  *              type="object",
+ *
  *              @OA\Property(
  *                  property="data",
  *                  type="object",
@@ -32,8 +37,10 @@ use App\Http\Controllers\Controller;
  *                  @OA\Property(
  *                      property="images",
  *                      type="array",
+ *
  *                      @OA\Items(
  *                          type="object",
+ *
  *                          @OA\Property(property="id", type="integer", example=1),
  *                          @OA\Property(property="url", type="string", example="http://example.com/image1.jpg")
  *                      )
@@ -41,6 +48,7 @@ use App\Http\Controllers\Controller;
  *              )
  *          )
  *      ),
+ *
  *     @OA\Response(
  *         response=404,
  *         description="Пост не найден"
@@ -49,5 +57,4 @@ use App\Http\Controllers\Controller;
  */
 class ShowController extends Controller
 {
-
 }

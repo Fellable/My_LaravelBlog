@@ -13,7 +13,7 @@ class PostResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
-            'url' => Storage::url($this->file_path)
+            'url' => Storage::url($this->file_path),
         ];
     }
 }

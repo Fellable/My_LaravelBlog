@@ -4,13 +4,8 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Post\PostResource;
-use App\Models\Category;
 use App\Models\Post;
-use App\Models\PostImage;
-use App\Models\Tag;
-use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class ShowController extends Controller
 {
@@ -22,6 +17,14 @@ class ShowController extends Controller
             ->where('id', '!=', $post->id)
             ->get()
             ->take(3);
+
         return view('post.show', compact('post', 'date', 'relatedPosts', 'images'));
+    }
+
+    public function gif_post(Post $post)
+    {
+        $date = Carbon::parse($post->created_at);
+
+        return view('post.gif.show', compact('post', 'date'));
     }
 }

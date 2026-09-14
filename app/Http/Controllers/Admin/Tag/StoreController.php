@@ -7,13 +7,11 @@ use App\Models\Tag;
 
 class StoreController extends Controller
 {
-
-
     public function __invoke(\App\Http\Requests\Admin\Tag\StoreRequest $request)
     {
         $data = $request->validated();
         Tag::firstOrCreate(['title' => $data['title']]);
+
         return redirect()->route('admin.tag.index');
     }
-
 }

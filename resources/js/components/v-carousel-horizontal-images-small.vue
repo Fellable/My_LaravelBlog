@@ -1,19 +1,25 @@
 <template>
-    <div class="v-carousel-item"><img :src="image_data.url" class="image" id="image" alt=""/>
+    <div class="v-carousel-item">
+        <img id="image" :src="image_data.url" class="image" alt="">
         <div class="item__content"></div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "v-carousel-horizontal-images-small",
-    data: () => ({color: 'red', fontSize: '13px', height: 200, width: '200px'}),
+    name: 'v-carousel-horizontal-images-small',
     props: {
         image_data: {
-            type: Object, default: () => {
-            }
+            type: Object,
+            default: () => {},
         },
-    }
+    },
+    data: () => ({
+        color: 'red',
+        fontSize: '13px',
+        height: 200,
+        width: '200px',
+    }),
 }
 </script>
 
@@ -85,4 +91,5 @@ export default {
     .image {
         width: 1000px;
     }
-} </style>
+}
+</style>

@@ -2,18 +2,12 @@
 
 namespace App\Http\Controllers\Post;
 
-
 use App\Http\Controllers\Controller;
 use App\Http\Filters\PostFilter;
 use App\Http\Requests\Post\FilterRequest;
-use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
-
 
 class IndexController extends Controller
 {
@@ -25,13 +19,6 @@ class IndexController extends Controller
         // Заранее загружаем теги и лайки для постов
         $posts = Post::with('tags', 'likedUsers')->filter($filter)->orderBy('queuery', 'asc')->paginate(6);
         $countPosts = Post::count();
-
-
-
-
-
-
-
 
         // Кешируем теги
         $tags = Cache::remember('tags', 60, function () {

@@ -30,14 +30,15 @@ class UpdateRequest extends FormRequest
         ];
     }
 
-    public function messages() {
+    public function messages()
+    {
         return [
-          'name.required' => 'Это поле необходимо для заполнения',
-          'name.string' => 'Это должна быть строка',
-          'email.required' => 'Это поле необходимо для заполнения',
-          'email.string' => 'Почта должна быть строкой',
-          'email.email' => 'Должен быть формат mail@domain.ru',
-          'email.unique' => 'Пользователь с таким имейлом существует',
+            'name.required' => 'Это поле необходимо для заполнения',
+            'name.string' => 'Это должна быть строка',
+            'email.required' => 'Это поле необходимо для заполнения',
+            'email.string' => 'Почта должна быть строкой',
+            'email.email' => 'Должен быть формат mail@domain.ru',
+            'email.unique' => 'Пользователь с таким имейлом существует',
         ];
     }
 }

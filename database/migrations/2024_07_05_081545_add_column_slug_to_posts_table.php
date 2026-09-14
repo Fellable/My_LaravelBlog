@@ -8,13 +8,11 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('slug')->after('title')->unique();
+            $table->string('slug')->after('title')->unique()->nullable();
         });
     }
 
